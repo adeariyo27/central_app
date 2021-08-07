@@ -1,0 +1,79 @@
+<!--footer start-->
+<footer class="fixed-bottom site-footer">
+    <div class="text-center">
+        <?= date('Y') ?> &copy; Central App - PTUN Palu.
+        <a href="#" class="go-top">
+            <i class="icon-angle-up"></i>
+        </a>
+    </div>
+</footer>
+<!--footer end-->
+</section>
+
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/jquery.js"></script>
+<script src="<?= base_url('assets/'); ?>js/jquery-1.8.3.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/bootstrap.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/bootstrap.bundle.min.js"></script>
+<script class="include" type="text/javascript" src="<?= base_url('assets/'); ?>js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="<?= base_url('assets/'); ?>js/jquery.scrollTo.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/'); ?>js/jquery.sparkline.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/'); ?>js/owl.carousel.js"></script>
+<script src="<?= base_url('assets/'); ?>js/jquery.customSelect.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/respond.min.js"></script>
+
+<script class="include" type="text/javascript" src="<?= base_url('assets/'); ?>js/jquery.dcjqaccordion.2.7.js"></script>
+
+<!--common script for all pages-->
+<script src="<?= base_url('assets/'); ?>js/common-scripts.js"></script>
+
+
+<script>
+    //owl carousel
+
+    $(document).ready(function() {
+        $("#owl-demo").owlCarousel({
+            navigation: true,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true,
+            autoPlay: true
+
+        });
+    });
+
+    //custom select box
+
+    $(function() {
+        $('select.styled').customSelect();
+    });
+</script>
+
+<script>
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+
+    $('.form-check-input').on('click', function() {
+        const menuId = $(this).data('menu');
+        const roleId = $(this).data('role');
+
+        $.ajax({
+            url: "<?= base_url('admin/changeaccess'); ?>",
+            type: 'post',
+            data: {
+                menuId: menuId,
+                roleId: roleId
+            },
+            success: function() {
+                document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId;
+            }
+        });
+    });
+</script>
+</body>
+
+</html>
