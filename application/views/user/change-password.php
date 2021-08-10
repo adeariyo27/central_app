@@ -25,8 +25,8 @@
                             <input type="password" class="form-control" id="repeat_password" name="repeat_password">
                             <small class="text-danger" style="font-style:italic"><?= form_error('repeat_password'); ?></small>
                         </div>
-                        <a href="<?= base_url('user'); ?>" class="btn btn-info"> Kembali</a>
-                        <button type="submit" class="btn btn-info">Submit</button>
+                        <a href="<?= base_url('user'); ?>" class="btn btn-sm btn-secondary"> Kembali</a>
+                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                     </form>
                 </div>
             </section>

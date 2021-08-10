@@ -22,6 +22,8 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // Role Ctrl
+
     public function role()
     {
         $this->form_validation->set_rules('role', 'Role', 'required|trim');
@@ -112,5 +114,140 @@ class Admin extends CI_Controller
         }
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akses Diubah!</div>');
+    }
+
+    // Menu ctrl
+
+    public function menu()
+    {
+        $this->form_validation->set_rules('menu', 'Menu', 'required|trim');
+        $this->form_validation->set_rules('icon', 'Icon', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Manajemen Menu';
+            $data['active_menu'] = 'Admin';
+            $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['menu'] = $this->db->get('user_menu')->result_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/menu', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'menu' => htmlspecialchars($this->input->post('menu', true)),
+                'icon' => htmlspecialchars($this->input->post('icon', true))
+            ];
+            $this->db->insert('user_menu', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu Baru Telah Ditambahkan.</div>');
+            redirect('admin/menu');
+        }
+    }
+
+    public function editMenu($id)
+    {
+        $this->form_validation->set_rules('menu', 'Menu', 'required|trim');
+        $this->form_validation->set_rules('icon', 'Icon', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Manajemen Menu';
+            $data['active_menu'] = 'Admin';
+            $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['menu'] = $this->Admin_model->getMenuByID($id);
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-menu', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Admin_model->editMenu();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu Berhasil Diubah.</div>');
+            redirect('admin/menu');
+        }
+    }
+
+    public function deleteMenu($id)
+    {
+        $this->Admin_model->deleteMenu($id);
+        redirect('admin/menu');
+    }
+
+    // Submenu ctrl
+
+    public function submenu()
+    {
+        $this->form_validation->set_rules('menu_id', 'Menu ID', 'required|trim');
+        $this->form_validation->set_rules('title', 'Nama Submenu', 'required|trim');
+        $this->form_validation->set_rules('url', 'Url', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Manajemen Submenu';
+            $data['active_menu'] = 'Admin';
+            $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['menu'] = $this->db->get('user_menu')->result_array();
+            $data['submenu'] = $this->Admin_model->getSubMenu();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/submenu', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'menu_id' => htmlspecialchars($this->input->post('menu_id', true)),
+                'title' => htmlspecialchars($this->input->post('title', true)),
+                'url' => htmlspecialchars($this->input->post('url', true)),
+                'is_active' => htmlspecialchars($this->input->post('is_active', true))
+            ];
+            $this->db->insert('user_sub_menu', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Submenu Baru Telah Ditambahkan.</div>');
+            redirect('admin/submenu');
+        }
+    }
+
+    public function editSubmenu($id)
+    {
+        $this->form_validation->set_rules('menu_id', 'Menu ID', 'required|trim');
+        $this->form_validation->set_rules('title', 'Nama Submenu', 'required|trim');
+        $this->form_validation->set_rules('url', 'Url', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Manajemen Submenu';
+            $data['active_menu'] = 'Admin';
+            $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['menu'] = $this->db->get('user_menu')->result_array();
+            $data['submenu'] = $this->Admin_model->getSubmenuByID($id);
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-submenu', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Admin_model->editSubmenu();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Submenu Berhasil Diubah.</div>');
+            redirect('admin/submenu');
+        }
+    }
+
+    public function deleteSubmenu($id)
+    {
+        $this->Admin_model->deleteSubmenu($id);
+        redirect('admin/submenu');
+    }
+
+    public function icon()
+    {
+        $data['title'] = 'Icon Font Awesome';
+        $data['active_menu'] = 'Admin';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/icon', $data);
+        $this->load->view('templates/footer');
     }
 }

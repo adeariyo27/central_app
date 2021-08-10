@@ -49,9 +49,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="<?= base_url('user'); ?>" class="btn btn-info"> Kembali</a>
-                    <button type="submit" class="btn btn-info">Submit</button>
-                    </form>
+                    <a href="<?= base_url('user'); ?>" class="btn btn-sm btn-secondary"> Kembali</a>
+                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                 </div>
             </section>
         </div>
