@@ -17,6 +17,10 @@
   <!--external css-->
   <link href="<?= base_url('assets/'); ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/owl.carousel.css" type="text/css">
+  <!-- datatables css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/r-2.2.9/datatables.min.css" />
   <!-- Custom styles for this template -->
   <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
   <link href="<?= base_url('assets/'); ?>css/style-responsive.css" rel="stylesheet" />

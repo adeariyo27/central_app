@@ -58,7 +58,7 @@ class Admin_model extends CI_Model
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu Berhasil Dihapus.</div>');
     }
 
-    // Menu Manajemen
+    // Submenu Manajemen
 
     public function getSubMenu()
     {
@@ -100,5 +100,51 @@ class Admin_model extends CI_Model
     {
         $this->db->delete('user_sub_menu', ['id' => $id]);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Submenu Berhasil Dihapus.</div>');
+    }
+
+    // User Manajemen
+
+    public function getUserDetail()
+    {
+        $q = "SELECT `user`.*, `user_jabatan`.`jabatan`, `user_role`.`role`
+              FROM `user`,`user_jabatan`,`user_role`
+              WHERE `user`.`jabatan_id` = `user_jabatan`.`id` AND `user`.`role_id` = `user_role`.`id`
+              ";
+
+        return $this->db->query($q)->result_array();
+    }
+
+    public function getUserDetailByID($id)
+    {
+        $q = "SELECT `user`.*, `user_jabatan`.`jabatan`, `user_role`.`role`
+              FROM `user`,`user_jabatan`,`user_role`
+              WHERE `user`.`jabatan_id` = `user_jabatan`.`id` AND `user`.`role_id` = `user_role`.`id` AND `user`.`id` = $id;
+              ";
+
+        return $this->db->query($q)->row_array();
+    }
+
+    public function getAllRole()
+    {
+        $q = "SELECT * FROM user_role";
+        return $this->db->query($q)->result_array();
+    }
+
+    public function editUser()
+    {
+        $data = [
+            'name' => htmlspecialchars($this->input->post('name', true)),
+            'username' => htmlspecialchars($this->input->post('username', true)),
+            'email' => htmlspecialchars($this->input->post('email', true)),
+            'mobile_phone' => htmlspecialchars($this->input->post('mobile_phone', true)),
+            'jabatan_id' => htmlspecialchars($this->input->post('jabatan_id', true)),
+            'role_id' => htmlspecialchars($this->input->post('role_id', true)),
+            'is_active' => htmlspecialchars($this->input->post('is_active', true))
+        ];
+        $this->db->where(
+            'id',
+            $this->input->post('id')
+        );
+        $this->db->update('user', $data);
     }
 }

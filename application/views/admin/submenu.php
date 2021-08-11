@@ -2,7 +2,7 @@
 <section id="main-content">
     <section class="wrapper">
         <!-- page start-->
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-lg-6">
                 <?= $this->session->flashdata('message'); ?>
                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubmenuModal"><i class="icon-plus-sign-alt"></i> Tambah Submenu </button>
@@ -10,40 +10,43 @@
                     <header class="panel-heading">
                         <?= $title; ?>
                     </header>
-                    <table class="table table-advance">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th><i class="icon-book"></i> Submenu</th>
-                                <th><i class="icon-book"></i> Menu</th>
-                                <th><i class=" icon-link"></i> Url</th>
-                                <th><i class=" icon-key"></i> Aktif</th>
-                                <th><i class=" icon-edit"></i> Action</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $no = 1; ?>
-                            <?php foreach ($submenu as $sm) : ?>
-                                <tr>
-                                    <th scope="row"><?= $no++; ?></th>
-                                    <td><?= $sm['title']; ?></td>
-                                    <td><?= $sm['menu']; ?></td>
-                                    <td><?= $sm['url']; ?></td>
-                                    <td>
-                                        <?php if ($sm['is_active'] == "1") {
-                                            echo "Yes";
-                                        } else {
-                                            echo "No";
-                                        } ?></td>
-                                    <td>
-                                        <a href="<?= base_url('admin/editSubmenu/') . $sm['id']; ?>" class="btn btn-primary btn-sm"><i class="icon-pencil"></i> </a>
-                                        <a href="<?= base_url('admin/deleteSubmenu/') . $sm['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="icon-trash"></i> </a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <table class="table table-bordered table-striped" id="tblUser">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th><i class="icon-book"></i> Submenu</th>
+                                        <th><i class="icon-book"></i> Menu</th>
+                                        <th><i class=" icon-link"></i> Url</th>
+                                        <th><i class=" icon-key"></i> Aktif</th>
+                                        <th><i class=" icon-edit"></i> Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($submenu as $sm) : ?>
+                                        <tr>
+                                            <th scope="row"><?= $no++; ?></th>
+                                            <td><?= $sm['title']; ?></td>
+                                            <td><?= $sm['menu']; ?></td>
+                                            <td><?= $sm['url']; ?></td>
+                                            <td>
+                                                <?php if ($sm['is_active'] == "1") {
+                                                    echo "Yes";
+                                                } else {
+                                                    echo "No";
+                                                } ?></td>
+                                            <td>
+                                                <a href="<?= base_url('admin/editSubmenu/') . $sm['id']; ?>" class="btn btn-primary btn-sm"><i class="icon-pencil"></i> </a>
+                                                <a href="<?= base_url('admin/deleteSubmenu/') . $sm['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="icon-trash"></i> </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>

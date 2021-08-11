@@ -10,6 +10,7 @@
 <!--footer end-->
 </section>
 
+
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/jquery.js"></script>
@@ -28,7 +29,6 @@
 
 <!--common script for all pages-->
 <script src="<?= base_url('assets/'); ?>js/common-scripts.js"></script>
-
 
 <script>
     //owl carousel
@@ -71,6 +71,24 @@
             success: function() {
                 document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId;
             }
+        });
+    });
+</script>
+
+<!-- Datables Js -->
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/r-2.2.9/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tblUser').DataTable({
+            responsive: true
+        });
+    });
+
+    $(document).ready(function() {
+        $('#tblSubmenu').DataTable({
+            responsive: true
         });
     });
 </script>

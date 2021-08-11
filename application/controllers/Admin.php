@@ -8,6 +8,7 @@ class Admin extends CI_Controller
         parent::__construct();
         is_logged_in();
         $this->load->model('Admin_model');
+        $this->load->model('User_model');
     }
 
     public function index()
@@ -249,5 +250,55 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/icon', $data);
         $this->load->view('templates/footer');
+    }
+
+    // User ctrl
+
+    public function user()
+    {
+        $data['title'] = 'Manajemen User';
+        $data['active_menu'] = 'Admin';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['user_detail'] = $this->Admin_model->getUserDetail();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/user', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function editUser($id)
+    {
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('mobile_phone', 'Nomor Handphone', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Manajemen User';
+            $data['active_menu'] = 'Admin';
+            $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['user_detail'] = $this->Admin_model->getUserDetailByID($id);
+            $data['jabatan'] = $this->User_model->getAllJabatan();
+            $data['role'] = $this->Admin_model->getAllRole();
+
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/edit-user', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Admin_model->editUser();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">User Berhasil Diubah.</div>');
+            redirect('admin/user');
+        }
+    }
+
+    public function deleteUser($id)
+    {
+        $this->Admin_model->deleteSubmenu($id);
+        redirect('admin/submenu');
     }
 }
