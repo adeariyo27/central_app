@@ -24,8 +24,13 @@
 <script src="<?= base_url('assets/'); ?>js/owl.carousel.js"></script>
 <script src="<?= base_url('assets/'); ?>js/jquery.customSelect.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/respond.min.js"></script>
-
 <script class="include" type="text/javascript" src="<?= base_url('assets/'); ?>js/jquery.dcjqaccordion.2.7.js"></script>
+
+<!-- Script Notification Sweetalert2-->
+<script src="<?= base_url('node_modules/sweetalert2/dist/sweetalert2.all.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/notif.js') ?>"></script>
+
+
 
 <!--common script for all pages-->
 <script src="<?= base_url('assets/'); ?>js/common-scripts.js"></script>
@@ -49,9 +54,7 @@
     $(function() {
         $('select.styled').customSelect();
     });
-</script>
 
-<script>
     $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
@@ -73,6 +76,10 @@
             }
         });
     });
+
+    $('#newRegisKuasa').on('shown.bs.modal', function() {
+        $('#nomor_regiskuasa').trigger('focus')
+    })
 </script>
 
 <!-- Datables Js -->

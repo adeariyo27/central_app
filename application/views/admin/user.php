@@ -1,9 +1,9 @@
 <!--main content start-->
 <section id="main-content">
-    <section class="wrapper site-min-height">
+    <section class="wrapper">
         <!-- page start-->
         <div class="row">
-            <div class="col-md-12 col-lg-10">
+            <div class="col-md-12 col-lg">
                 <?= $this->session->flashdata('message'); ?>
                 <section class="panel">
                     <header class="panel-heading">
@@ -48,8 +48,8 @@
                                             </td>
                                             <td><?= date("l, d F Y", $u['date_created']); ?></td>
                                             <td>
-                                                <a href="<?= base_url('admin/editUser/') . $u['id']; ?>" class="btn btn-primary btn-sm"><i class="icon-pencil"></i> </a>
-                                                <a href="<?= base_url('admin/') . $u['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="icon-trash"></i> </a>
+                                                <a href="<?= base_url('admin/editUser/') . $u['id']; ?>" class="badge badge-primary"><i class="icon-pencil"></i> </a>
+                                                <a href="<?= base_url('admin/') . $u['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="icon-trash"></i> </a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
