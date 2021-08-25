@@ -33,6 +33,9 @@
                                 <p><span>Username </span>: <?= $user['username']; ?> </p>
                             </div>
                             <div class="bio-row">
+                                <p><span>NIP </span>: <?= $jabatanByUser['nip']; ?></p>
+                            </div>
+                            <div class="bio-row">
                                 <p><span>Jabatan </span>: <?= $jabatanByUser['jabatan']; ?></p>
                             </div>
                             <div class="bio-row">

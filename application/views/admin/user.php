@@ -17,6 +17,7 @@
                                         <th>#</th>
                                         <th> Nama</th>
                                         <th> Username</th>
+                                        <th> NIP</th>
                                         <th> Email</th>
                                         <th> Jabatan</th>
                                         <th> No. Handphone</th>
@@ -34,6 +35,7 @@
                                             <th scope="row"><?= $no++; ?></th>
                                             <td><?= $u['name']; ?></td>
                                             <td><?= $u['username']; ?></td>
+                                            <td><?= $u['nip']; ?></td>
                                             <td><?= $u['email']; ?></td>
                                             <td><?= $u['jabatan']; ?></td>
                                             <td><?= $u['mobile_phone']; ?></td>
@@ -46,7 +48,7 @@
                                                     echo "No";
                                                 } ?>
                                             </td>
-                                            <td><?= date("l, d F Y", $u['date_created']); ?></td>
+                                            <td><?= tgl_eng_to_ind(date("d-m-Y", $u['date_created'])); ?></td>
                                             <td>
                                                 <a href="<?= base_url('admin/editUser/') . $u['id']; ?>" class="badge badge-primary"><i class="icon-pencil"></i> </a>
                                                 <a href="<?= base_url('admin/') . $u['id']; ?>" class="badge badge-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><i class="icon-trash"></i> </a>

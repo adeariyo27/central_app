@@ -2,6 +2,12 @@
 <section id="main-content">
     <section class="wrapper">
         <!-- page start-->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color:#F1F2F7;">
+                <li class="breadcrumb-item"><a href="<?= base_url('hukum') ?>">Register Surat Kuasa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Surat Kuasa</li>
+            </ol>
+        </nav>
         <div class="row">
             <div class="col-md-12 col-lg">
                 <div class="flash-data" data-notifregiskuasa="<?= $this->session->flashdata('message'); ?>"></div>

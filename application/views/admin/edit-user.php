@@ -12,14 +12,23 @@
                     <form action="" method="post">
                         <input type="text" hidden name="id" value="<?= $user_detail['id']; ?>">
                         <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="name" name="name" value="<?= $user_detail['name']; ?>">
-                            <small class="text-danger" style="font-style:italic"><?= form_error('name') ?></small>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="name">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="<?= $user_detail['name']; ?>">
+                                    <small class="text-danger" style="font-style:italic"><?= form_error('name') ?></small>
+                                </div>
+                                <div class="col">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" value="<?= $user_detail['username']; ?>">
+                                    <small class="text-danger" style="font-style:italic"><?= form_error('username') ?></small>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" value="<?= $user_detail['username']; ?>">
-                            <small class="text-danger" style="font-style:italic"><?= form_error('username') ?></small>
+                            <label for="nip">NIP</label>
+                            <input type="text" class="form-control" id="nip" name="nip" value="<?= $user_detail['nip']; ?>">
+                            <small class="text-danger" style="font-style:italic"><?= form_error('nip') ?></small>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>

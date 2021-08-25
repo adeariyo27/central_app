@@ -31,6 +31,27 @@ class Hukum_model extends CI_Model
         return $this->db->query($q)->row_array();
     }
 
+    public function getPenandatangan()
+    {
+        $q = "SELECT `user`.`name`, `user`.`jabatan_id`, `user_jabatan`.`jabatan` 
+                FROM `user` JOIN `user_jabatan`
+                ON  `user`.`jabatan_id` = `user_jabatan`.`id`
+                ";
+        return $this->db->query($q)->result_array();
+    }
+
+    public function getPenandatanganByName()
+    {
+        $name = $this->input->post('penandatangan');
+        $q = "SELECT `user`.`name`, `user`.`jabatan_id`, `user`.`nip`, `user_jabatan`.`jabatan` 
+                FROM `user` JOIN `user_jabatan`
+                ON  `user`.`jabatan_id` = `user_jabatan`.`id`
+                WHERE `user`.`name` = '$name'
+                ";
+
+        return $this->db->query($q)->result_array();
+    }
+
     public function edit()
     {
         $data = [
@@ -52,5 +73,12 @@ class Hukum_model extends CI_Model
     {
         $this->db->delete('hukum_regiskuasa', ['id' => $id]);
         $this->session->set_flashdata('message', 'Dihapus');
+    }
+
+    public function setPeriode($from_date, $until_date)
+    {
+        $this->db->where('tgl_regiskuasa >=', $from_date);
+        $this->db->where('tgl_regiskuasa <=', $until_date);
+        return $this->db->get('hukum_regiskuasa')->result_array();
     }
 }

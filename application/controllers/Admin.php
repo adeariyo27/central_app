@@ -301,4 +301,69 @@ class Admin extends CI_Controller
         $this->Admin_model->deleteSubmenu($id);
         redirect('admin/submenu');
     }
+
+    public function setupSatker()
+    {
+        $this->form_validation->set_rules('nama_satker', 'Nama Satuan Kerja', 'required|trim');
+        $this->form_validation->set_rules('alamat_satker', 'Username', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Pengaturan Satuan Kerja';
+            $data['active_menu'] = 'Admin';
+            $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['satker'] = $this->db->get('setup_satker')->result_array();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/setup-satker', $data);
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function editSatker()
+    {
+        $data['satker'] = $this->db->get('setup_satker')->row_array();
+
+        //cek apakah ada image
+        $upload_image = $_FILES['logo_satker']['name'];
+
+        if ($upload_image) {
+            $config['allowed_types'] = 'gif|jpg|png|svg';
+            $config['max_size'] = '2048';
+            $config['upload_path'] = 'assets/img/profile/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('logo_satker')) {
+
+                $old_image = $data['satker']['logo_satker'];
+                if ($old_image != 'default.png') {
+                    unlink(FCPATH . 'assets/img/profile/' . $old_image);
+                }
+
+                $new_image = $this->upload->data('file_name');
+                $this->db->set('logo_satker', $new_image);
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">' . $this->upload->display_errors() . '</div>');
+                redirect('admin/setupSatker');
+            }
+        }
+
+        $data = [
+            'nama_satker' => $this->input->post('nama_satker'),
+            'alamat_satker' => $this->input->post('alamat_satker'),
+            'kota_satker' => $this->input->post('kota_satker'),
+            'no_tlp' => $this->input->post('no_tlp'),
+            'no_hp' => $this->input->post('no_hp'),
+            'email_satker' => $this->input->post('email_satker'),
+            'situs' => $this->input->post('situs'),
+        ];
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('setup_satker', $data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profil Satuan Kerja Berhasil Diperbaharui!</div>');
+        redirect('admin/setupSatker');
+    }
 }

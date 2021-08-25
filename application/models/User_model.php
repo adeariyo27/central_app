@@ -7,7 +7,7 @@ class User_model extends CI_Model
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $take_data = $data['user']['jabatan_id'];
-        $q = "SELECT `user`.jabatan_id, `user_jabatan`.`jabatan` 
+        $q = "SELECT `user`.*, `user_jabatan`.`jabatan`
                 FROM `user` JOIN `user_jabatan`
                 ON  `user`.`jabatan_id` = `user_jabatan`.`id`
                 WHERE `user`.`jabatan_id` = $take_data
@@ -56,6 +56,7 @@ class User_model extends CI_Model
         $data = [
             'name' => $this->input->post('name'),
             'username' => $this->input->post('username'),
+            'nip' => $this->input->post('nip'),
             'mobile_phone' => $this->input->post('mobile_phone'),
             'jabatan_id' => $this->input->post('jabatan')
         ];

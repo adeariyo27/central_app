@@ -22,6 +22,7 @@ class Hukum extends CI_Controller
             $data['active_menu'] = 'Hukum';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['regiskuasa'] = $this->db->get('hukum_regiskuasa')->result_array();
+            $data['penandatangan'] = $this->Hukum_model->getPenandatangan();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('templates/sidebar', $data);
@@ -61,5 +62,53 @@ class Hukum extends CI_Controller
     {
         $this->Hukum_model->delete($id);
         redirect('hukum');
+    }
+
+    public function cetak()
+    {
+        $data['title'] = 'Cetak Laporan';
+        $data['satker'] = $this->db->get('setup_satker')->row_array();
+        $data['judul_laporan'] = 'Laporan Register Surat Kuasa';
+        $data['regiskuasa'] = $this->db->get('hukum_regiskuasa')->result_array();
+        $data['penandatangan'] = $this->Hukum_model->getPenandatanganByName();
+        $this->load->library('dompdf_gen');
+        $this->load->view('hukum/cetak-laporan', $data);
+
+        //Setting pdf
+        $paper_size = 'legal';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("laporan_registerkuasa.pdf", array('Attachment' => 0));
+    }
+
+    public function cetakPeriode()
+    {
+        $tgl_judul_awal = tgl_eng_to_ind(date('d-m-Y', strtotime($this->input->post('from_date'))));
+        $tgl_judul_akhir = tgl_eng_to_ind(date('d-m-Y', strtotime($this->input->post('until_date'))));
+
+        $from_date = $this->input->post('from_date');
+        $until_date = $this->input->post('until_date');
+
+        $data['title'] = 'Cetak Laporan';
+        $data['judul_laporan'] = 'Laporan Register Surat Kuasa Dari Tanggal ' . $tgl_judul_awal . ' s/d ' . $tgl_judul_akhir . '';
+        $data['satker'] = $this->db->get('setup_satker')->row_array();
+        $data['penandatangan'] = $this->Hukum_model->getPenandatanganByName();
+        $this->load->library('dompdf_gen');
+        $data['regiskuasa'] = $this->Hukum_model->setPeriode($from_date, $until_date);
+        $this->load->view('hukum/cetak-laporan', $data);
+
+        //Setting pdf
+        $paper_size = 'legal';
+        $orientation = 'landscape';
+        $html = $this->output->get_output();
+        $this->dompdf->set_paper($paper_size, $orientation);
+
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        $this->dompdf->stream("laporan_registerkuasa.pdf", array('Attachment' => 0));
     }
 }
