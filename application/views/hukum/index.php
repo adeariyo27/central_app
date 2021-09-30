@@ -4,9 +4,10 @@
         <!-- page start-->
         <div class="row">
             <div class="col-md-12 col-lg">
+                <div class="flash-data" data-notifregiskuasa="<?= $this->session->flashdata('message'); ?>"></div>
                 <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newRegisKuasa" role="button"><i class="icon-plus-sign-alt"></i> Register Kuasa Baru</a>
                 <a class="btn btn-info mb-3" data-toggle="modal" data-target="#cetakSeluruh" role="button" role="button"><i class="icon-print"></i> Cetak Laporan</a>
-                <a class="btn btn-warning mb-3" data-toggle="modal" data-target="#cetakPeriode" role="button"><i class="icon-print"></i> Pilih Periode</a>
+                <a class="btn btn-warning mb-3" data-toggle="modal" data-target="#cetakPeriode" role="button"><i class="icon-print"></i> Pilih Periode Cetak</a>
                 <section class="panel">
                     <header class="panel-heading">
                         <?= $title; ?>
@@ -75,7 +76,7 @@
                         <div class="form-row">
                             <div class="col">
                                 <label for="nomor_regiskuasa">Nomor Register Kuasa</label>
-                                <input type="text" class="form-control" id="nomor_regiskuasa" name="nomor_regiskuasa" value="/DAFT.SK/<?= date("Y"); ?>/PTUN.PL" focus>
+                                <input type="text" class="form-control" id="nomor_regiskuasa" name="nomor_regiskuasa" value="/Daft.SK/<?= date("Y"); ?>/PTUN.PL" focus>
                             </div>
                             <div class="col">
                                 <label for="tgl_regiskuasa">Tanggal Register Kuasa</label>

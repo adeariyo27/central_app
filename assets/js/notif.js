@@ -24,3 +24,13 @@ $('.tblHapusRegisKuasa').on('click', function (e) {
         }
     })
 });
+
+// Notification CRUD Buku Tamu Digital
+const notifBukuTamu = $('.flash-data').data('notifbukutamu');
+if ( notifBukuTamu ) {
+    Swal.fire({
+        title: 'Data Pengunjung',
+        text: 'Telah Berhasil ' + notifBukuTamu,
+        icon: 'success',
+    })
+}
