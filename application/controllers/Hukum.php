@@ -68,7 +68,7 @@ class Hukum extends CI_Controller
     {
         $data['title'] = 'Cetak Laporan';
         $data['satker'] = $this->db->get('setup_satker')->row_array();
-        $data['judul_laporan'] = 'Laporan Register Surat Kuasa';
+        $data['judul_laporan'] = 'LAPORAN REGISTER SURAT KUASA';
         $data['regiskuasa'] = $this->db->get('hukum_regiskuasa')->result_array();
         $data['penandatangan'] = $this->Hukum_model->getPenandatanganByName();
         $this->load->library('dompdf_gen');
@@ -94,7 +94,7 @@ class Hukum extends CI_Controller
         $until_date = $this->input->post('until_date');
 
         $data['title'] = 'Cetak Laporan';
-        $data['judul_laporan'] = 'Laporan Register Surat Kuasa Dari Tanggal ' . $tgl_judul_awal . ' s/d ' . $tgl_judul_akhir . '';
+        $data['judul_laporan'] = 'LAPORAN REGISTER SURAT KUASA DARI TANGGAL ' . $tgl_judul_awal . ' S/D ' . $tgl_judul_akhir . '';
         $data['satker'] = $this->db->get('setup_satker')->row_array();
         $data['penandatangan'] = $this->Hukum_model->getPenandatanganByName();
         $this->load->library('dompdf_gen');

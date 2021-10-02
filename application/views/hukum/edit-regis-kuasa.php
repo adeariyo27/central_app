@@ -18,7 +18,7 @@
                     <div class="panel-body">
                         <form action="" method="POST">
                             <div class="modal-body">
-                                <input type="text" class="form-control" id="id" name="id" value="<?= $regiskuasa['id']; ?>">
+                                <input hidden type="text" class="form-control" id="id" name="id" value="<?= $regiskuasa['id']; ?>">
                                 <div class="form-group">
                                     <div class="form-row">
                                         <div class="col">

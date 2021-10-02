@@ -99,6 +99,17 @@
         });
     });
 </script>
+
+<!-- Enabled Disabled Button -->
+<script>
+    $("#penandatangan").on('change', function() {
+        $('#btnSubmit').prop('disabled', this.value != "" ? false : true);
+    });
+
+    $("#penandatanganperiode").on('change', function() {
+        $('#btnSubmitPeriode').prop('disabled', this.value != "" ? false : true);
+    });
+</script>
 </body>
 
 </html>

@@ -19,6 +19,7 @@
     <link href="<?= base_url('vendor/limmo_v_1.1/') ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url('vendor/limmo_v_1.1/') ?>css/style.css" rel="stylesheet">
     <link href="<?= base_url('vendor/limmo_v_1.1/') ?>css/vendors.css" rel="stylesheet">
+    <link href="<?= base_url('assets/') ?>css/jquery-ui.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
@@ -74,7 +75,7 @@
                                 <label for="no_tlp">Nomor Telepon / Nomor HP</label>
                             </div>
                             <div class="form-floating mb-1">
-                                <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" placeholder="Jenis Kelamin">
+                                <select name="jenis_kelamin" id="jenis_kelamin" class="form-select required" aria-label="jenis_kelamin">
                                     <option value="" disabled selected>-</option>
                                     <option value="Laki-Laki">Laki-Laki</option>
                                     <option value="Perempuan">Perempuan</option>
@@ -106,7 +107,7 @@
                                     <input class="btn btn-success btn-sm" type="submit" name="visit" value="SIMPAN SEBAGAI KUNJUNGAN HARI INI" style="margin-top: 5px;">
                                 </div>
                             </div>
-                            <a href=" ../dev" class="btn btn-sm btn-dark d-grid gap-2 mb-2" style="font-style:italic;text-transform:uppercase;">Buka Halaman Admin</a>
+                            <a href="<?= base_url('user') ?>" class="btn btn-sm btn-dark d-grid gap-2 mb-2" style="font-style:italic;text-transform:uppercase;">Buka Halaman Admin</a>
                         </div>
                     </div>
                 </form>
@@ -118,6 +119,7 @@
     <script src="<?= base_url('vendor/limmo_v_1.1/') ?>js/common_scripts.min.js"></script>
     <script src="<?= base_url('vendor/limmo_v_1.1/') ?>js/common_functions.js"></script>
     <script src="<?= base_url('vendor/limmo_v_1.1/') ?>assets/validate.js"></script>
+    <script src="<?= base_url('assets/') ?>js/jquery-ui.js"></script>
 
     <!-- SPECIFIC SCRIPTS -->
     <script src="<?= base_url('vendor/limmo_v_1.1/') ?>js/review_wizard_func.js"></script>
@@ -125,6 +127,38 @@
     <!-- Script Notification Sweetalert2-->
     <script src="<?= base_url('node_modules/sweetalert2/dist/sweetalert2.all.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/notif.js') ?>"></script>
+
+    <!-- Autofill Script -->
+    <script>
+        $(document).ready(function() {
+            $('#no_id').autocomplete({
+                source: '<?= base_url('bukutamu/get_autofill/?'); ?>',
+                select: function(event, ui) {
+                    $('[name="no_id"]').val(ui.item.label);
+                    $('[name="nama"]').val(ui.item.nama);
+                    $('[name="tgl_lahir"]').val(ui.item.tgl_lahir);
+                    $('[name="no_tlp"]').val(ui.item.no_tlp);
+                    $('[name="jenis_kelamin"]').val(ui.item.jenis_kelamin);
+                    $('[name="alamat"]').val(ui.item.alamat);
+                    $('[name="pekerjaan"]').val(ui.item.pekerjaan);
+                }
+            });
+        });
+        $(document).ready(function() {
+            $('#nama').autocomplete({
+                source: '<?= base_url('bukutamu/get_autofillnama/?'); ?>',
+                select: function(event, ui) {
+                    $('[name="no_id"]').val(ui.item.no_id);
+                    $('[name="nama"]').val(ui.item.label);
+                    $('[name="tgl_lahir"]').val(ui.item.tgl_lahir);
+                    $('[name="no_tlp"]').val(ui.item.no_tlp);
+                    $('[name="jenis_kelamin"]').val(ui.item.jenis_kelamin);
+                    $('[name="alamat"]').val(ui.item.alamat);
+                    $('[name="pekerjaan"]').val(ui.item.pekerjaan);
+                }
+            });
+        });
+    </script>
 
 </body>
 

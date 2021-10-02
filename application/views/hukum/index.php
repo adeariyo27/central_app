@@ -149,7 +149,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button formtarget="_blank" type="submit" class="btn btn-sm btn-primary">Cetak</button>
+                    <button disabled id="btnSubmit" formtarget="_blank" type="submit" class="btn btn-sm btn-primary">Cetak</button>
                 </div>
             </form>
         </div>
@@ -183,7 +183,7 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <select name="penandatangan" id="penandatangan" class="form-control">
+                                <select name="penandatangan" id="penandatanganperiode" class="form-control">
                                     <option value="" class="font-italic text-muted"> - Pilih Penandatangan - </option>
                                     <?php foreach ($penandatangan as $p) : ?>
                                         <option value="<?= $p['name'] ?>"><?= $p['name'] ?></option>
@@ -195,7 +195,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button formtarget="_blank" type="submit" class="btn btn-sm btn-primary">Cetak</button>
+                    <button disabled id="btnSubmitPeriode" formtarget="_blank" type="submit" class="btn btn-sm btn-primary">Cetak</button>
                 </div>
             </form>
         </div>
