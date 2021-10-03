@@ -25,6 +25,7 @@
 <script src="<?= base_url('assets/'); ?>js/jquery.customSelect.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/respond.min.js"></script>
 <script class="include" type="text/javascript" src="<?= base_url('assets/'); ?>js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="<?= base_url('assets/') ?>js/jquery-ui.js"></script>
 
 <!-- Script Notification Sweetalert2-->
 <script src="<?= base_url('node_modules/sweetalert2/dist/sweetalert2.all.min.js') ?>"></script>
@@ -108,6 +109,24 @@
 
     $("#penandatanganperiode").on('change', function() {
         $('#btnSubmitPeriode').prop('disabled', this.value != "" ? false : true);
+    });
+</script>
+
+<!-- Autofill Script -->
+<script>
+    $(document).ready(function() {
+        $('#nama_pemberikuasa').autocomplete({
+            source: '<?= base_url('hukum/get_autofill/?'); ?>',
+            appendTo: "#newRegisKuasa"
+        });
+        $('.ui-menu').css('font-family', 'Georama')
+    });
+    $(document).ready(function() {
+        $('#nama_penerimakuasa').autocomplete({
+            source: '<?= base_url('hukum/get_autofillpenerimakuasa/?'); ?>',
+            appendTo: "#newRegisKuasa"
+        });
+        $('.ui-menu').css('font-family', 'Georama')
     });
 </script>
 </body>

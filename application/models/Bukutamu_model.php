@@ -10,6 +10,13 @@ class Bukutamu_model extends CI_Model
         return $query->result_array();
     }
 
+    public function readAllKunjungan()
+    {
+        $this->db->order_by('tanggal', 'DESC');
+        $query = $this->db->get('bukutamu_daftar_kunjungan');
+        return $query->result_array();
+    }
+
     public function newVisitor()
     {
         $data1 = [
@@ -100,11 +107,30 @@ class Bukutamu_model extends CI_Model
         return $query->result_array();
     }
 
+    public function setPeriodeDaftarKunjungan($from_date, $until_date)
+    {
+        $this->db->where('tanggal >=', $from_date);
+        $this->db->where('tanggal <=', $until_date);
+        $this->db->order_by('tanggal', 'DESC');
+        $query = $this->db->get('bukutamu_daftar_kunjungan');
+        return $query->result_array();
+    }
+
     public function getProfilPengunjungByID($id)
     {
         $q = "SELECT `bukutamu_profil_pengunjung`.* 
                 FROM `bukutamu_profil_pengunjung`
                 WHERE `bukutamu_profil_pengunjung`.`no_id` = $id
+                ";
+
+        return $this->db->query($q)->row_array();
+    }
+
+    public function getDaftarKunjunganByID($id)
+    {
+        $q = "SELECT `bukutamu_daftar_kunjungan`.* 
+                FROM `bukutamu_daftar_kunjungan`
+                WHERE `bukutamu_daftar_kunjungan`.`id` = $id
                 ";
 
         return $this->db->query($q)->row_array();
@@ -126,9 +152,30 @@ class Bukutamu_model extends CI_Model
         $this->db->update('bukutamu_profil_pengunjung', $data);
     }
 
+    public function editKunjungan()
+    {
+        $data = [
+            'nama' => htmlspecialchars($this->input->post('nama', true)),
+            'no_tlp' => htmlspecialchars($this->input->post('no_tlp', true)),
+            'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+            'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
+            'tanggal' => htmlspecialchars($this->input->post('tanggal', true)),
+            'keperluan' => htmlspecialchars($this->input->post('keperluan', true))
+        ];
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('bukutamu_daftar_kunjungan', $data);
+    }
+
     public function delete($id)
     {
         $this->db->delete('bukutamu_profil_pengunjung', ['no_id' => $id]);
+        $this->session->set_flashdata('message', 'Dihapus');
+    }
+
+    public function deleteKunjungan($id)
+    {
+        $this->db->delete('bukutamu_daftar_kunjungan', ['id' => $id]);
         $this->session->set_flashdata('message', 'Dihapus');
     }
 }

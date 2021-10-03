@@ -111,4 +111,28 @@ class Hukum extends CI_Controller
         $this->dompdf->render();
         $this->dompdf->stream("laporan_registerkuasa.pdf", array('Attachment' => 0));
     }
+
+    public function get_autofill()
+    {
+        if (isset($_GET['term'])) {
+            $result = $this->Hukum_model->search_npk($_GET['term']);
+            if (count($result) > 0) {
+                foreach ($result as $row)
+                    $arr_result[] = $row->nama_pemberikuasa;
+                echo json_encode($arr_result);
+            }
+        }
+    }
+
+    public function get_autofillpenerimakuasa()
+    {
+        if (isset($_GET['term'])) {
+            $result = $this->Hukum_model->search_npk2($_GET['term']);
+            if (count($result) > 0) {
+                foreach ($result as $row)
+                    $arr_result[] = $row->nama_penerimakuasa;
+                echo json_encode($arr_result);
+            }
+        }
+    }
 }

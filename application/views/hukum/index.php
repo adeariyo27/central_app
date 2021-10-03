@@ -91,7 +91,7 @@
                                 <input type="text" class="form-control" id="nomor_suratkuasa" name="nomor_suratkuasa">
                             </div>
                             <div class="col">
-                                <label for="tgl_suratkuasa">Tanggal Register Kuasa</label>
+                                <label for="tgl_suratkuasa">Tanggal Surat Kuasa</label>
                                 <input type="date" class="form-control" id="tgl_suratkuasa" name="tgl_suratkuasa">
                             </div>
                         </div>

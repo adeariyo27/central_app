@@ -54,27 +54,23 @@
     <table style="font-size:14px;width:100%;">
         <tr>
             <th>NO</th>
-            <th>NOMOR IDENTITAS</th>
             <th>NAMA</th>
-            <th>TANGGAL LAHIR</th>
             <th>NOMOR TELEPON</th>
-            <th>JENIS KELAMIN</th>
             <th>ALAMAT</th>
             <th>PEKERJAAN</th>
-            <th>TANGGAL REGISTER</th>
+            <th>TANGGAL BERKUNJUNG</th>
+            <th>KEPERLUAN</th>
         </tr>
         <?php $no = 1; ?>
-        <?php foreach ($profilpengunjung as $pp) : ?>
+        <?php foreach ($daftarkunjungan as $dk) : ?>
         <tr>
             <td scope="row"><?= $no++; ?></td>
-            <td><?= $pp['no_id']; ?></td>
-            <td><?= $pp['nama']; ?></td>
-            <td><?= tgl_eng_to_ind(date('d-m-Y', strtotime($pp['tgl_lahir']))); ?></td>
-            <td><?= $pp['no_tlp']; ?></td>
-            <td><?= $pp['jenis_kelamin']; ?></td>
-            <td><?= $pp['alamat']; ?></td>
-            <td><?= $pp['pekerjaan']; ?></td>
-            <td><?= tgl_eng_to_ind(date('d-m-Y, h:i', strtotime($pp['tanggal']))); ?></td>
+            <td><?= $dk['nama']; ?></td>
+            <td><?= $dk['no_tlp']; ?></td>
+            <td><?= $dk['alamat']; ?></td>
+            <td><?= $dk['pekerjaan']; ?></td>
+            <td><?= tgl_eng_to_ind(date('d-m-Y, h:i', strtotime($dk['tanggal']))); ?></td>
+            <td><?= $dk['keperluan']; ?></td>
         </tr>
         <?php endforeach; ?>
     </table>

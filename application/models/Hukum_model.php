@@ -81,4 +81,20 @@ class Hukum_model extends CI_Model
         $this->db->where('tgl_regiskuasa <=', $until_date);
         return $this->db->get('hukum_regiskuasa')->result_array();
     }
+
+    public function search_npk($npk)
+    {
+        $this->db->like('nama_pemberikuasa', $npk);
+        $this->db->order_by('id', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('hukum_regiskuasa')->result();
+    }
+
+    public function search_npk2($npk)
+    {
+        $this->db->like('nama_penerimakuasa', $npk);
+        $this->db->order_by('id', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('hukum_regiskuasa')->result();
+    }
 }

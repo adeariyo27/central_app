@@ -61,6 +61,7 @@
                             <div class="mb-1 form-floating">
                                 <input type="text" name="no_id" id="no_id" class="form-control" placeholder="Nomor Identitas" autofocus>
                                 <label for="no_id">Nomor Identitas</label>
+                                <?= form_error('no_id', ' <small class="text-light pl-3">* ', '</small>'); ?>
                             </div>
                             <div class="mb-1 form-floating">
                                 <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama">
