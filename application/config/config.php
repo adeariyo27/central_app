@@ -24,7 +24,7 @@ date_default_timezone_set("Asia/Makassar");
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/central-app/';
+$config['base_url'] = 'http://localhost:8080/central-app/';
 
 /*
 |--------------------------------------------------------------------------
