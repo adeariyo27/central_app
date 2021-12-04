@@ -84,3 +84,13 @@ $('.tblHapusDaftarKunjungan').on('click', function (e) {
         }
     })
 });
+
+// Notification CRUD Survei IKM
+const notifSurveiIkm = $('.flash-data').data('notifsurveiikm');
+if ( notifSurveiIkm ) {
+    Swal.fire({
+        title: 'Data Survei IKM',
+        text: 'Telah Berhasil ' + notifSurveiIkm,
+        icon: 'success',
+    })
+}

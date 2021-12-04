@@ -3,7 +3,7 @@
     <section class="wrapper">
         <!-- page start-->
         <div class="row mb-3">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                 <?= $this->session->flashdata('message'); ?>
                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubmenuModal"><i class="icon-plus-sign-alt"></i> Tambah Submenu </button>
                 <section class="panel">
