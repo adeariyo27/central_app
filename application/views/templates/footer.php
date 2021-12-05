@@ -81,6 +81,9 @@
     $('#newRegisKuasa').on('shown.bs.modal', function() {
         $('#nomor_regiskuasa').trigger('focus')
     })
+    $('#newPertanyaan').on('shown.bs.modal', function() {
+        $('#pertanyaan').trigger('focus')
+    })
 </script>
 
 <!-- Datables Js -->
@@ -127,6 +130,19 @@
             appendTo: "#newRegisKuasa"
         });
         $('.ui-menu').css('font-family', 'Georama')
+    });
+</script>
+
+<!-- Disable Space Characters -->
+<script>
+    $("#name_attr").on({
+        keydown: function(e) {
+            if (e.which === 32)
+                this.value = this.value.replace(/\s/, '_');
+        },
+        keyup: function() {
+            this.value = this.value.toLowerCase();
+        }
     });
 </script>
 </body>

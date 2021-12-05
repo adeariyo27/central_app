@@ -43,15 +43,15 @@
             <div class="flash-data" data-notifsurveiikm="<?= $this->session->flashdata('message'); ?>"></div>
             <div class="row">
                 <div class="col-5">
-                    <a href="index.html"><img src="<?= base_url('assets/img/profile/') ?>icon.png" alt="" width="50" height="55"></a>
+                    <a href="<?= base_url('survei') ?>"><img src="<?= base_url('assets/img/profile/') ?>icon.png" alt="" width="50" height="55"></a>
                 </div>
                 <div class="col-7">
                     <div id="social">
                         <ul>
-                            <li><a href="#0"><i class="social_facebook"></i></a></li>
-                            <li><a href="#0"><i class="social_twitter"></i></a></li>
-                            <li><a href="#0"><i class="social_instagram"></i></a></li>
-                            <li><a href="#0"><i class="social_linkedin"></i></a></li>
+                            <li><a href="https://www.facebook.com/ptunpalu1998/"><i class="social_facebook"></i></a></li>
+                            <li><a href="https://www.ptun-palu.go.id"><i class="icon_house"></i></a></li>
+                            <li><a href="https://www.instagram.com/ptunpalu/?hl=id"><i class="social_instagram"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCMDzpN1eazGIFP36JrScgFQ"><i class="social_youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -93,19 +93,19 @@
                                     ?>
                                     <?php foreach ($survei as $s) : ?>
                                         <div class="step">
-                                            <h3 class="main_question question_step"><strong><?= $s['kategori']; ?></strong><?= $s['pertanyaan']; ?></h3>
+                                            <h3 class="main_question question_step"><strong>Pertanyaan <?= $vb; ?> dari <?= $jlh_pertanyaan_ikm; ?> dengan Kategori <?= $s['kategori']; ?></strong><?= $s['pertanyaan']; ?></h3>
                                             <div class="review_block_smiles">
                                                 <ul class="clearfix">
                                                     <li>
                                                         <div class="container_smile">
                                                             <input type="radio" id="very_bad_<?= $vb++ ?>" name="<?= $s['name_attr']; ?>" class="required" value="Sangat Tidak Puas">
-                                                            <label class="radio smile_1" for="very_bad_<?= $fvb++ ?>"><span>Sangat Tidak Puas</span></label>
+                                                            <label class="radio smile_1" for="very_bad_<?= $fvb++ ?>"><span>Kurang Puas</span></label>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         <div class="container_smile">
                                                             <input type="radio" id="bad_<?= $b++ ?>" name="<?= $s['name_attr']; ?>" class="required" value="Tidak Puas">
-                                                            <label class="radio smile_2" for="bad_<?= $fb++ ?>"><span>Tidak Puas</span></label>
+                                                            <label class="radio smile_2" for="bad_<?= $fb++ ?>"><span>Cukup Puas</span></label>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -123,7 +123,7 @@
                                                 </ul>
                                                 <div class="row justify-content-between add_bottom_25">
                                                     <div class="col-4">
-                                                        <em>Sangat Tidak Puas</em>
+                                                        <em>Kurang Puas</em>
                                                     </div>
                                                     <div class="col-4 text-end">
                                                         <em>Sangat Puas</em>
@@ -146,6 +146,10 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="datetime-local" name="tanggal" id="tanggal" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="kritik_saran">Kritik dan Saran untuk Pengadilan Tata Usaha Negara Palu</label>
+                                            <textarea name="kritik_saran" id="kritik_saran" class="form-control" style="height:180px;"></textarea>
                                         </div>
                                         <!-- /row -->
                                         <!-- <div class="form-group terms">
