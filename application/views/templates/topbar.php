@@ -4,11 +4,11 @@
         <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
     </div>
     <!--logo start-->
-    <a href="<?= base_url('admin/index') ?>" class="logo hidden-phone">Central <span>App</span></a>
+    <a href="<?= base_url('admin/index') ?>" class="logo hidden-phone"><img src="<?= base_url('assets/img/gallery/logo_ca.png') ?>" height="25"> Central <span>App</span></a>
     <!--logo end-->
-    <div class="top-nav ">
+    <div class=" top-nav ">
         <!--search & user info start-->
-        <ul class="nav pull-right top-menu">
+        <ul class=" nav pull-right top-menu">
             <li>
                 <input type="text" class="form-control search" placeholder="Search">
             </li>

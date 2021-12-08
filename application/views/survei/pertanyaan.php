@@ -4,8 +4,8 @@
         <!-- page start-->
         <div class="row">
             <div class="col-md-12 col-lg">
-                <div class="flash-data" data-notifpertanyaanikm="<?= $this->session->flashdata('message'); ?>"></div>
-                <a class="btn btn-primary mb-3" hidden data-toggle="modal" data-target="#newPertanyaan" role="button"><i class="icon-plus-sign-alt"></i> Tambah Pertanyaan Baru</a>
+                <div class="flash-data" data-notifpertanyaan="<?= $this->session->flashdata('message'); ?>"></div>
+                <a class="btn btn-primary mb-3" data-toggle="modal" data-target="#newPertanyaan" role="button"><i class="icon-plus-sign-alt"></i> Tambah Pertanyaan Baru</a>
                 <section class="panel">
                     <header class="panel-heading">
                         <?= $title; ?>
@@ -31,8 +31,8 @@
                                             <td><?= $p['kategori']; ?></td>
                                             <td><?= $p['jenis_survei']; ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('survei/pertanyaan_ikm/') . $p['id']; ?>" class="badge badge-primary"><i class="icon-pencil"></i></a>
-                                                <a href="<?= base_url('surveipertanyaan_ikm/') . $p['id']; ?>" class="badge badge-danger tblHapusRegisKuasa"><i class=" icon-trash"></i></a>
+                                                <a href="<?= base_url('survei/editPertanyaan/') . $p['id']; ?>" class="badge badge-primary"><i class="icon-pencil"></i></a>
+                                                <a href="<?= base_url('survei/hapusPertanyaan/') . $p['id']; ?>" class="badge badge-danger"><i class=" icon-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -120,7 +120,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('survei/pertanyaan_ikm'); ?>" method="POST">
+            <form action="<?= base_url('survei/pertanyaan'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="form-row">
@@ -155,86 +155,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-sm btn-primary">Tambah</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Cerak Seluruh -->
-<div class="modal fade" id="cetakSeluruh" tabindex="-1" aria-labelledby="cetakSeluruh" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="cetakSeluruh">Penandatangan</h5>
-                <button type="button" class="btn btn-light btn-sm" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('hukum/cetak'); ?>" method="POST">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col">
-                                <select name="penandatangan" id="penandatangan" class="form-control">
-                                    <option value="" class="font-italic text-muted"> - Pilih Penandatangan - </option>
-                                    <?php foreach ($penandatangan as $p) : ?>
-                                        <option value="<?= $p['name'] ?>"><?= $p['name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button disabled id="btnSubmit" formtarget="_blank" type="submit" class="btn btn-sm btn-primary">Cetak</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Pilih Periode -->
-<div class="modal fade" id="cetakPeriode" tabindex="-1" aria-labelledby="cetakPeriode" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="cetakPeriode">Pilih Periode Cetak Laporan</h5>
-                <button type="button" class="btn btn-light btn-sm" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('hukum/cetakperiode'); ?>" method="POST">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="from_date">Dari Tanggal</label>
-                                <input type="date" class="form-control" id="from_date" name="from_date">
-                            </div>
-                            <div class="col">
-                                <label for="until_date">Sampai Tanggal</label>
-                                <input type="date" class="form-control" id="until_date" name="until_date">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col">
-                                <select name="penandatangan" id="penandatanganperiode" class="form-control">
-                                    <option value="" class="font-italic text-muted"> - Pilih Penandatangan - </option>
-                                    <?php foreach ($penandatangan as $p) : ?>
-                                        <option value="<?= $p['name'] ?>"><?= $p['name'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button disabled id="btnSubmitPeriode" formtarget="_blank" type="submit" class="btn btn-sm btn-primary">Cetak</button>
                 </div>
             </form>
         </div>

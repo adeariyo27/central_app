@@ -5,7 +5,13 @@ class Survei_model extends CI_Model
 {
     public function readQuestion()
     {
-        $query = $this->db->get('survei_pertanyaan');
+        $query = $this->db->get_where('survei_pertanyaan', ['jenis_survei' => 'ikm']);
+        return $query->result_array();
+    }
+
+    public function readQuestionIpk()
+    {
+        $query = $this->db->get_where('survei_pertanyaan', ['jenis_survei' => 'ipk']);
         return $query->result_array();
     }
 
@@ -66,33 +72,72 @@ class Survei_model extends CI_Model
         redirect('survei');
     }
 
+    public function newSurveiIpk()
+    {
+        $data = [
+            'nama' => htmlspecialchars($this->input->post('nama', true)),
+            'instansi' => htmlspecialchars($this->input->post('instansi', true)),
+            'umur' => htmlspecialchars($this->input->post('umur', true)),
+            'jenis_kelamin' => htmlspecialchars($this->input->post('jenis_kelamin', true)),
+            'pendidikan' => htmlspecialchars($this->input->post('pendidikan', true)),
+            'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
+            'manipulasi_peraturan' => htmlspecialchars($this->input->post('manipulasi_peraturan', true)),
+            'penyalahgunaan_jabatan' => htmlspecialchars($this->input->post('penyalahgunaan_jabatan', true)),
+            'menjual_pengaruh' => htmlspecialchars($this->input->post('menjual_pengaruh', true)),
+            'transaksi_biaya' => htmlspecialchars($this->input->post('transaksi_biaya', true)),
+            'biaya_tambahan' => htmlspecialchars($this->input->post('biaya_tambahan', true)),
+            'hadiah' => htmlspecialchars($this->input->post('hadiah', true)),
+            'transparansi_biaya' => htmlspecialchars($this->input->post('transparansi_biaya', true)),
+            'percaloan' => htmlspecialchars($this->input->post('percaloan', true)),
+            'perbuatan_curang' => htmlspecialchars($this->input->post('perbuatan_curang', true)),
+            'transaksi_rahasia' => htmlspecialchars($this->input->post('transaksi_rahasia', true))
+        ];
+        $this->db->insert('survei_hasil_ipk', $data);
+        $this->session->set_flashdata('message', 'Disimpan');
+        redirect('survei/index_ipk');
+    }
+
     public function readIkm()
     {
         $query = $this->db->get('survei_hasil_ikm');
         return $query->result_array();
     }
 
-    public function getPertanyaanIkm()
+    public function readIpk()
     {
-        $query = $this->db->get_where('survei_pertanyaan', ['jenis_survei' => "ikm"]);
+        $query = $this->db->get('survei_hasil_ipk');
         return $query->result_array();
     }
 
-    public function newPertanyaanIkm()
+    public function getPertanyaanIkm()
+    {
+        $query = $this->db->get('survei_pertanyaan');
+        return $query->result_array();
+    }
+
+    public function newPertanyaan()
     {
         $data = [
             'pertanyaan' => htmlspecialchars($this->input->post('pertanyaan', true)),
+            'name_attr' => htmlspecialchars($this->input->post('name_attr', true)),
             'kategori' => htmlspecialchars($this->input->post('kategori', true)),
             'jenis_survei' => htmlspecialchars($this->input->post('jenis_survei', true))
         ];
         $this->db->insert('survei_pertanyaan', $data);
         $this->session->set_flashdata('message', 'Disimpan');
-        redirect('survei/pertanyaan_ikm');
+        redirect('survei/pertanyaan');
     }
 
     public function jlhPertanyaanIkm()
     {
         $this->db->like('jenis_survei', 'ikm');
+        $this->db->from('survei_pertanyaan');
+        return $this->db->count_all_results();
+    }
+
+    public function jlhPertanyaanIpk()
+    {
+        $this->db->like('jenis_survei', 'ipk');
         $this->db->from('survei_pertanyaan');
         return $this->db->count_all_results();
     }
@@ -113,5 +158,26 @@ class Survei_model extends CI_Model
                 WHERE `survei_hasil_ikm`.`id` = $id
                 ";
         return $this->db->query($query)->row_array();
+    }
+
+    public function cetakIpk($id)
+    {
+        $query = "SELECT `survei_hasil_ipk`.* 
+                FROM `survei_hasil_ipk`
+                WHERE `survei_hasil_ipk`.`id` = $id
+                ";
+        return $this->db->query($query)->row_array();
+    }
+
+    public function funcdel_ikm($id)
+    {
+        $this->db->delete('survei_hasil_ikm', ['id' => $id]);
+        $this->session->set_flashdata('message', 'Dihapus');
+    }
+
+    public function funcdel_ipk($id)
+    {
+        $this->db->delete('survei_hasil_ipk', ['id' => $id]);
+        $this->session->set_flashdata('message', 'Dihapus');
     }
 }

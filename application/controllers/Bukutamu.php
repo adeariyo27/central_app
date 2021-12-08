@@ -116,6 +116,7 @@ class Bukutamu extends CI_Controller
 
         $this->dompdf->load_html($html);
         $this->dompdf->render();
+        ob_end_clean();
         $this->dompdf->stream("laporan_profil_pengunjung.pdf", array('Attachment' => 0));
     }
 
@@ -137,6 +138,7 @@ class Bukutamu extends CI_Controller
 
         $this->dompdf->load_html($html);
         $this->dompdf->render();
+        ob_end_clean();
         $this->dompdf->stream("laporan_daftar_kunjungan.pdf", array('Attachment' => 0));
     }
 
@@ -164,6 +166,7 @@ class Bukutamu extends CI_Controller
 
         $this->dompdf->load_html($html);
         $this->dompdf->render();
+        ob_end_clean();
         $this->dompdf->stream("laporan_profil_pengunjung.pdf", array('Attachment' => 0));
     }
 
@@ -191,6 +194,7 @@ class Bukutamu extends CI_Controller
 
         $this->dompdf->load_html($html);
         $this->dompdf->render();
+        ob_end_clean();
         $this->dompdf->stream("laporan_daftar_kunjungan.pdf", array('Attachment' => 0));
     }
 

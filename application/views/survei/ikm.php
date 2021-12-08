@@ -3,9 +3,7 @@
     <section class="wrapper">
         <div class="row">
             <div class="col-md-12 col-lg">
-                <div class="flash-data" data-notifadminikm="<?= $this->session->flashdata('message'); ?>"></div>
-                <a class="btn btn-info mb-3" data-toggle="modal" data-target="#cetakSeluruh" role="button" role="button"><i class="icon-print"></i> Cetak Laporan</a>
-                <a class="btn btn-warning mb-3" data-toggle="modal" data-target="#cetakPeriode" role="button"><i class="icon-print"></i> Pilih Periode Cetak</a>
+                <div class="flash-data" data-notifadminsurvei="<?= $this->session->flashdata('message'); ?>"></div>
                 <section class="panel">
                     <header class="panel-heading">
                         <?= $title; ?>
@@ -434,8 +432,7 @@
                                             <td><?= $total__sangat_puas; ?></td>
                                             <td class="text-center">
                                                 <a href="<?= base_url('survei/cetaksurvei_ikm/') . $i['id']; ?>" class="badge badge-warning" target="_blank"><i class=" icon-print"></i></a>
-                                                <a href="<?= base_url('survei/editsurvei_ikm/') . $i['id']; ?>" class="badge badge-primary"><i class="icon-pencil"></i></a>
-                                                <a href="<?= base_url('survei/deletesurvei_ikm/') . $i['id']; ?>" class="badge badge-danger tblHapusProfilpengunjung"><i class=" icon-trash"></i></a>
+                                                <a href="<?= base_url('survei/deletesurvei_ikm/') . $i['id']; ?>" class="badge badge-danger tblHapusSurveiIkm"><i class=" icon-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

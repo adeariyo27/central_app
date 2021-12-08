@@ -12,6 +12,7 @@ class User extends CI_Controller
 
     public function index()
     {
+        error_reporting(0);
         $data['title'] = 'Profil Saya';
         $data['active_menu'] = 'User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
@@ -26,6 +27,7 @@ class User extends CI_Controller
 
     public function edit()
     {
+        error_reporting(0);
         $data['title'] = 'Perbaharui Profil';
         $data['active_menu'] = 'User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();

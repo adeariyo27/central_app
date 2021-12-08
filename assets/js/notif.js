@@ -85,7 +85,7 @@ $('.tblHapusDaftarKunjungan').on('click', function (e) {
     })
 });
 
-// Notification CRUD Survei IKM
+// Notification CRUD Survei IKM dan IPK
 const notifSurveiIkm = $('.flash-data').data('notifsurveiikm');
 if ( notifSurveiIkm ) {
     Swal.fire({
@@ -94,3 +94,61 @@ if ( notifSurveiIkm ) {
         icon: 'success',
     })
 }
+const notifSurveiIpk = $('.flash-data').data('notifsurveiipk');
+if ( notifSurveiIpk ) {
+    Swal.fire({
+        title: 'Data Survei IPK',
+        text: 'Telah Berhasil ' + notifSurveiIpk,
+        icon: 'success',
+    })
+}
+const notifAdminSurvei = $('.flash-data').data('notifadminsurvei');
+if ( notifAdminSurvei ) {
+    Swal.fire({
+        title: 'Data Survei',
+        text: 'Telah Berhasil ' + notifAdminSurvei,
+        icon: 'success',
+    })
+}
+const newPertanyaan = $('.flash-data').data('notifpertanyaan');
+if ( newPertanyaan ) {
+    Swal.fire({
+        title: 'Data Pertanyaan',
+        text: 'Telah Berhasil ' + newPertanyaan,
+        icon: 'success',
+    })
+}
+$('.tblHapusSurveiIkm').on('click', function (e) {
+    e.preventDefault();
+    const href = $(this).attr('href');
+    Swal.fire({
+        title: 'Apakah anda yakin ingin menghapus?',
+        text: "Data Survei akan dihapus",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Hapus'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = href;
+        }
+    })
+});
+$('.tblHapusSurveiIpk').on('click', function (e) {
+    e.preventDefault();
+    const href = $(this).attr('href');
+    Swal.fire({
+        title: 'Apakah anda yakin ingin menghapus?',
+        text: "Data Survei IPK akan dihapus",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Hapus'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            document.location.href = href;
+        }
+    })
+});

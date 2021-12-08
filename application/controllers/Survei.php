@@ -25,6 +25,22 @@ class Survei extends CI_Controller
         }
     }
 
+    public function index_ipk()
+    {
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required|trim');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan', 'required|trim');
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'E-SKM - Pengadilan Tata Usaha Negara Palu';
+            $data['survei'] = $this->Survei_model->readQuestionIpk();
+            $data['jlh_pertanyaan_ipk'] = $this->Survei_model->jlhPertanyaanIpk();
+            $this->load->view('survei/index_ipk', $data);
+        } else {
+            $this->Survei_model->newSurveiIpk();
+        }
+    }
+
     public function ikm()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -35,7 +51,7 @@ class Survei extends CI_Controller
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['title'] = 'Survei IKM';
             $data['active_menu'] = 'Survei';
-            $data['ikm'] = $this->Survei_model->readIKM();
+            $data['ikm'] = $this->Survei_model->readIkm();
             $data['penandatangan'] = $this->Survei_model->getPenandatangan();
 
             $this->load->view('templates/header', $data);
@@ -48,7 +64,30 @@ class Survei extends CI_Controller
         }
     }
 
-    public function pertanyaan_ikm()
+    public function ipk()
+    {
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required|trim');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan', 'required|trim');
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+            $data['title'] = 'Survei IPK';
+            $data['active_menu'] = 'Survei';
+            $data['ipk'] = $this->Survei_model->readIpk();
+            $data['penandatangan'] = $this->Survei_model->getPenandatangan();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('survei/ipk', $data);
+            $this->load->view('templates/footer');
+        } else {
+            // $this->Survei_model->newSurveiIkm();
+        }
+    }
+
+    public function pertanyaan()
     {
         $this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'required|trim');
         $this->form_validation->set_rules('name_attr', 'Name Attribut', 'required|trim');
@@ -57,31 +96,70 @@ class Survei extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-            $data['title'] = 'Pertanyaan IKM';
+            $data['title'] = 'Manajemen Pertanyaan';
             $data['active_menu'] = 'Survei';
             $data['pertanyaan'] = $this->Survei_model->getPertanyaanIkm();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('templates/sidebar', $data);
-            $this->load->view('survei/pertanyaan_ikm', $data);
+            $this->load->view('survei/pertanyaan', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->Survei_model->newPertanyaanIkm();
+            $this->Survei_model->newPertanyaan();
         }
     }
 
     public function cetaksurvei_ikm($id)
     {
         $data['title'] = 'Survey IKM';
-        $data['judul_laporan'] = 'SURVEY KEPUASAN PELAYANAN';
+        $data['judul_laporan'] = 'SURVEI KEPUASAN PELAYANAN';
         $data['satker'] = $this->db->get('setup_satker')->row_array();
         $data['survei'] =  $this->Survei_model->cetakIkm($id);
-        $data['penandatangan'] = $this->Survei_model->getPenandatanganByName();
 
-        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal']);
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal', 'tempDir' => __DIR__ . '/tmp']);
         $mpdf->showImageErrors = true;
         $data = $this->load->view('survei/cetak_ikm', $data, TRUE);
         $mpdf->WriteHTML($data);
         $mpdf->Output();
+    }
+
+    public function cetaksurvei_ipk($id)
+    {
+        $data['title'] = 'Survey IPK';
+        $data['judul_laporan'] = 'KUESIONER SURVEI INDEKS KORUPSI';
+        $data['satker'] = $this->db->get('setup_satker')->row_array();
+        $data['survei'] =  $this->Survei_model->cetakIPK($id);
+
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'Legal', 'tempDir' => __DIR__ . '/tmp']);
+        $mpdf->showImageErrors = true;
+        $data = $this->load->view('survei/cetak_ipk', $data, TRUE);
+        $mpdf->WriteHTML($data);
+        $mpdf->Output();
+    }
+
+    public function deletesurvei_ikm($id)
+    {
+        $this->Survei_model->funcdel_ikm($id);
+        redirect('survei/ikm');
+    }
+
+    public function deletesurvei_ipk($id)
+    {
+        $this->Survei_model->funcdel_ipk($id);
+        redirect('survei/ipk');
+    }
+
+    public function editPertanyaan($id)
+    {
+        $this->load->view('templates/auth-header');
+        $this->load->view('auth/blocked');
+        $this->load->view('templates/auth-footer');
+    }
+
+    public function hapusPertanyaan($id)
+    {
+        $this->load->view('templates/auth-header');
+        $this->load->view('auth/blocked');
+        $this->load->view('templates/auth-footer');
     }
 }

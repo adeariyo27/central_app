@@ -33,7 +33,7 @@
                         <label for="mobile_phone">Jabatan</label>
                         <select name="jabatan" id="jabatan" class="form-control m-bot15">
                             <option class="text-active font-weight-bolder" selected value="<?= $jabatanByUser['jabatan_id'] ?>"><?= $jabatanByUser['jabatan']; ?></option>
-                            <option value="" class="font-italic text-muted"> - Pilih Jabatan Lainnya - </option>
+                            <option value="" class="font-italic text-muted" hidden> - Pilih Jabatan Lainnya - </option>
                             <?php foreach ($jabatan as $jb) : ?>
                                 <option value="<?= $jb['id'] ?>"><?= $jb['jabatan'] ?></option>
                             <?php endforeach; ?>

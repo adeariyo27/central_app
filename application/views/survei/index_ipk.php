@@ -25,10 +25,11 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="<?= base_url('vendor/survey-form/html/') ?>css/custom.css" rel="stylesheet">
+    <link href="<?= base_url('vendor/jQKeyboard-master/') ?>jQKeyboard.css" rel="stylesheet">
 
 </head>
 
-<body class="style_2">
+<body class="style_3">
 
     <div id="preloader">
         <div data-loader="circle-side"></div>
@@ -40,7 +41,7 @@
 
     <header>
         <div class="container-fluid">
-            <div class="flash-data" data-notifsurveiikm="<?= $this->session->flashdata('message'); ?>"></div>
+            <div class="flash-data" data-notifsurveiipk="<?= $this->session->flashdata('message'); ?>"></div>
             <div class="row">
                 <div class="col-5">
                     <a href="<?= base_url('survei') ?>"><img src="<?= base_url('assets/img/profile/') ?>icon.png" alt="" height="70"></a>
@@ -68,66 +69,81 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-6 col-lg-6 d-flex align-items-center">
                         <div class="main_title_1">
-                            <h3><img src="<?= base_url('vendor/survey-form/html/') ?>img/main_icon_1.svg" width="80" height="80" alt=""> Survei IKM</h3>
-                            <p>Bagaimana pendapat Bapak / Ibu / Saudara / Saudari sekalian mengenai pelayanan yang tedapat pada PTUN Palu. Silahkan menjawab beberapa pertanyaan yang sudah tersedia melalui form berikut ini.</p>
+                            <h3><img src="<?= base_url('vendor/survey-form/html/') ?>img/main_icon_1.svg" width="80" height="80" alt=""> Survei IPK</h3>
+                            <p>Bagaimana pendapat Bapak / Ibu / Saudara / Saudari sekalian mengenai presepsi korupsi yang tedapat pada PTUN Palu. Silahkan menjawab beberapa pertanyaan yang sudah tersedia melalui form berikut ini.</p>
                             <p><em>- Pengadilan Tata Usaha Negara Palu</em></p>
-                            <a href="<?= base_url('survei/index_ipk'); ?>"><button type="button" name="forward" class="forward">Buka Halaman Survei IPK</button></a>
+                            <a href="<?= base_url('survei'); ?>"><button type="button" name="forward" class="forward">Buka Halaman Survei IKM</button></a>
                         </div>
                     </div>
                     <!-- /col -->
                     <div class="col-xl-5 col-lg-5">
                         <div id="wizard_container">
                             <!-- /top-wizard -->
-                            <form id="wrapped" method="POST" autocomplete="off" action="<?= base_url('survei') ?>">
+                            <form id="wrapped" method="POST" autocomplete="off" action="<?= base_url('survei/index_ipk') ?>">
                                 <input id="website" name="website" type="text" value="">
                                 <!-- Leave for security protection, read docs for details -->
                                 <div id="middle-wizard">
-                                    <?php
-                                    $vb = 1;
+                                    <?php $vb = 1;
                                     $fvb = 1;
                                     $b = 1;
                                     $fb = 1;
+                                    $a = 1;
+                                    $fa = 1;
                                     $g = 1;
                                     $fg = 1;
                                     $vg = 1;
                                     $fvg = 1;
+                                    $sg = 1;
+                                    $fsg = 1;
                                     ?>
                                     <?php foreach ($survei as $s) : ?>
                                         <div class="step">
-                                            <h3 class="main_question question_step"><strong>Pertanyaan <?= $vb; ?> dari <?= $jlh_pertanyaan_ikm; ?> dengan Kategori <?= $s['kategori']; ?></strong><?= $s['pertanyaan']; ?></h3>
-                                            <div class="review_block_smiles">
+                                            <h3 class="main_question question_step"><strong>Pertanyaan <?= $vb; ?> dari <?= $jlh_pertanyaan_ipk; ?></strong><?= $s['pertanyaan'] ?></h3>
+                                            <div class="review_block_numbers">
                                                 <ul class="clearfix">
                                                     <li>
-                                                        <div class="container_smile">
-                                                            <input type="radio" id="very_bad_<?= $vb++ ?>" name="<?= $s['name_attr']; ?>" class="required" value="Kurang Puas">
-                                                            <label class="radio smile_1" for="very_bad_<?= $fvb++ ?>"><span>Kurang Puas</span></label>
+                                                        <div class="container_numbers">
+                                                            <input type="radio" id="very_bad_<?= $vb++ ?>" name="<?= $s['name_attr'] ?>" class="required" value="1">
+                                                            <label class="radio very_bad" for="very_bad_<?= $fvb++ ?>">1</label>
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <div class="container_smile">
-                                                            <input type="radio" id="bad_<?= $b++ ?>" name="<?= $s['name_attr']; ?>" class="required" value="Cukup Puas">
-                                                            <label class="radio smile_2" for="bad_<?= $fb++ ?>"><span>Cukup Puas</span></label>
+                                                        <div class="container_numbers">
+                                                            <input type="radio" id="bad_<?= $b++ ?>" name="<?= $s['name_attr'] ?>" class="required" value="2">
+                                                            <label class="radio bad" for="bad_<?= $fb++ ?>">2</label>
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <div class="container_smile">
-                                                            <input type="radio" id="good_<?= $g++ ?>" name="<?= $s['name_attr']; ?>" class="required" value="Puas">
-                                                            <label class="radio smile_4" for="good_<?= $fg++ ?>"><span>Puas</span></label>
+                                                        <div class="container_numbers">
+                                                            <input type="radio" id="average_<?= $a++ ?>" name="<?= $s['name_attr'] ?>" class="required" value="3">
+                                                            <label class="radio average" for="average_<?= $fa++ ?>">3</label>
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <div class="container_smile">
-                                                            <input type="radio" id="very_good_<?= $vg++ ?>" name="<?= $s['name_attr']; ?>" class="required" value="Sangat Puas">
-                                                            <label class="radio smile_5" for="very_good_<?= $fvg++ ?>"><span>Sangat Puas</span></label>
+                                                        <div class="container_numbers">
+                                                            <input type="radio" id="good_<?= $g++ ?>" name="<?= $s['name_attr'] ?>" class="required" value="4">
+                                                            <label class="radio good" for="good_<?= $fg++ ?>">4</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="container_numbers">
+                                                            <input type="radio" id="very_good_<?= $vg++ ?>" name="<?= $s['name_attr'] ?>" class="required" value="5">
+                                                            <label class="radio very_good" for="very_good_<?= $fvg++ ?>">5</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="container_numbers">
+                                                            <input type="radio" id="super_good_<?= $sg++ ?>" name="<?= $s['name_attr'] ?>" class="required" value="6">
+                                                            <label class="radio super_good" for="super_good_<?= $fsg++ ?>">6</label>
                                                         </div>
                                                     </li>
                                                 </ul>
                                                 <div class="row justify-content-between add_bottom_25">
                                                     <div class="col-4">
-                                                        <em>Kurang Puas</em>
+                                                        <em>Sangat Tidak Setuju</em>
                                                     </div>
                                                     <div class="col-4 text-end">
-                                                        <em>Sangat Puas</em>
+                                                        <em>Sangat Setuju</em>
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,18 +155,31 @@
                                         <h3 class="main_question">Mohon untuk mengisi data diri dibawah ini</h3>
                                         <div class="form-group">
                                             <label for="name">Nama</label>
-                                            <input type="text" name="nama" id="name" class="form-control required">
+                                            <input type="text" name="nama" id="name testvirtual" class="form-control jQKeyboard">
                                         </div>
                                         <div class="form-group">
-                                            <label for="no_tlp">Nomor Telepon / Handphone</label>
-                                            <input type="text" name="no_tlp" id="no_tlp" class="form-control">
+                                            <label for="instansi">Instansi / Perusahaan</label>
+                                            <input type="text" name="instansi" id="instansi" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <input type="datetime-local" name="tanggal" id="tanggal" class="form-control">
+                                            <label for="umur">Umur</label>
+                                            <input type="text" name="umur" id="umur" class="form-control required">
                                         </div>
                                         <div class="form-group">
-                                            <label for="kritik_saran">Kritik dan Saran untuk Pengadilan Tata Usaha Negara Palu</label>
-                                            <textarea name="kritik_saran" id="kritik_saran" class="form-control" style="height:180px;"></textarea>
+                                            <label for="jenis_kelamin">Jenis Kelamin</label>
+                                            <select name="jenis_kelamin" class="form-control required" id="jenis_kelamin">
+                                                <option value="">Jenis Kelamin</option>
+                                                <option value="Laki-Laki">Laki-Laki</option>
+                                                <option value="Perempuan">Perempuan</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pendidikan">Pendidikan</label>
+                                            <input type="text" name="pendidikan" id="pendidikan" class="form-control required">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pekerjaan">Pekerjaan</label>
+                                            <input type="text" name="pekerjaan" id="pekerjaan" class="form-control required">
                                         </div>
                                         <!-- /row -->
                                         <!-- <div class="form-group terms">

@@ -82,6 +82,7 @@ class Hukum extends CI_Controller
 
         $this->dompdf->load_html($html);
         $this->dompdf->render();
+        ob_end_clean();
         $this->dompdf->stream("laporan_registerkuasa.pdf", array('Attachment' => 0));
     }
 
@@ -109,6 +110,7 @@ class Hukum extends CI_Controller
 
         $this->dompdf->load_html($html);
         $this->dompdf->render();
+        ob_end_clean();
         $this->dompdf->stream("laporan_registerkuasa.pdf", array('Attachment' => 0));
     }
 
