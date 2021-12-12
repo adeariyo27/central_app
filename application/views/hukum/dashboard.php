@@ -1,8 +1,7 @@
-<!--main content start-->
 <section id="main-content">
     <section class="wrapper">
         <!-- page start-->
-        <!-- page end-->
+        <h1><?= $title; ?></h1>
+        <!-- page end -->
     </section>
 </section>
-<!--main content end-->

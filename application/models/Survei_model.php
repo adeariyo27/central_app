@@ -55,6 +55,7 @@ class Survei_model extends CI_Model
             'pemeriksaan_setempat' => htmlspecialchars($this->input->post('pemeriksaan_setempat', true)),
             'profesionalitas_hakim' => htmlspecialchars($this->input->post('profesionalitas_hakim', true)),
             'pemberian_salinan_putusan' => htmlspecialchars($this->input->post('pemberian_salinan_putusan', true)),
+            'pelayanan_informasi' => htmlspecialchars($this->input->post('pelayanan_informasi', true)),
             'pelayanan_pengaduan' => htmlspecialchars($this->input->post('pelayanan_pengaduan', true)),
             'pelayanan_persuratan' => htmlspecialchars($this->input->post('pelayanan_persuratan', true)),
             'pengembalian_sisa_biaya_panjar' => htmlspecialchars($this->input->post('pengembalian_sisa_biaya_panjar', true)),
