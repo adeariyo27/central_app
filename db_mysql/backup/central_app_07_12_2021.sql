@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 12:44 PM
+-- Generation Time: Dec 07, 2021 at 10:26 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -266,9 +266,7 @@ INSERT INTO `bukutamu_daftar_kunjungan` (`id`, `nama`, `no_tlp`, `tanggal`, `ala
 (249, 'Sardi Achsan', '082208229289', '2021-11-16 09:55:00', 'Lasoani', 'Advokat', 'Sidang'),
 (250, 'Indra Djaya Petalolo', '-', '2021-11-16 10:19:00', 'Palu', 'Wiraswasta', 'Sidang'),
 (251, 'Tri Samsudin marjuki', '085790306303', '2021-11-16 10:20:00', 'Palu', 'PNS', 'Sidang'),
-(252, 'Arpin E.Ido', '082271669602', '2021-11-16 10:23:00', 'Desa Biga', 'PNS', 'Sidang'),
-(253, 'Aditya Reza Gusnanda', '085156161496', '2021-12-12 22:52:00', 'Medan', 'PNS', 'Urus Surat Keterangan'),
-(254, 'Abdul rahman', '08534241453', '2021-12-12 22:55:00', 'Jl. Moh hatta no. 28', 'Wiraswasta', 'Bertanya Jadwal Sidang');
+(252, 'Arpin E.Ido', '082271669602', '2021-11-16 10:23:00', 'Desa Biga', 'PNS', 'Sidang');
 
 -- --------------------------------------------------------
 
@@ -297,7 +295,7 @@ INSERT INTO `bukutamu_profil_pengunjung` (`no_id`, `nama`, `tgl_lahir`, `no_tlp`
 ('1271042312610002', 'Wisetyo sasongko', '1961-12-23', '081376370628', 'Laki-Laki', '2021-09-15 09:51:00', 'Lembontoru', 'Swasta'),
 ('1307051911070002', 'arie muhammad haikal', '1987-11-19', '08118331187', 'Laki-Laki', '2021-09-23 10:54:00', 'jakarta selatan', 'legal audit ojk'),
 ('15.01949', 'Syahrudin,S.H', '1984-08-04', '085241199222', 'Laki-Laki', '2021-03-25 11:27:00', 'Jl.Yosudarso No 1 D', 'Advokat'),
-('1984010320091210', 'Hery', '1984-01-03', '081390545943', 'Laki-Laki', '2021-10-05 20:41:00', 'Jakarta', 'PNS'),
+('1984010320091210', 'Hery', '1984-01-03', '081390545943', 'Laki-Laki', '2021-10-05 20:41:00', 'Jakarta', 'pNS'),
 ('2171100601799010', 'A SENG', '1979-01-06', '082135728227', 'Laki-Laki', '2021-10-21 10:45:00', 'Karangsuci cilacap', 'Wiraswasta'),
 ('24217605000387', 'Sahrul,SH', '1976-05-01', '081341112741', 'Laki-Laki', '2021-11-11 10:35:00', 'Roviga', 'Advokat'),
 ('3174062601643', 'Samsul Samoeri,SH,MM', '1964-01-26', '081297500756', 'Laki-Laki', '2021-11-11 10:23:00', 'Jakarta', 'Karyawan swasta'),
@@ -345,7 +343,7 @@ INSERT INTO `bukutamu_profil_pengunjung` (`no_id`, `nama`, `tgl_lahir`, `no_tlp`
 ('7205061001710001', 'Supardi', '1971-03-10', '081286270902', 'Laki-Laki', '2021-03-24 08:47:00', 'Surawele blok gladiol no 18', 'PNS'),
 ('7205061007171000', 'Supardi A Mokoapat', '1971-01-10', '081286270902', 'Laki-Laki', '2021-09-08 10:34:00', 'Lasoani', 'PNS'),
 ('7206012211940003', 'Trisno putrawan', '1994-12-22', '082361851569', 'Laki-Laki', '2021-09-15 10:12:00', 'Desa lee', 'Sekdes'),
-('7206012503900001', 'Wisnu uruwo', '1990-03-25', '085395458359', 'Laki-Laki', '2021-09-15 10:14:00', 'Desa lee', ''),
+('7206012503900001', 'Wisnu uruwo', '1990-03-25', '085395458359', '', '2021-09-15 10:14:00', 'Desa lee', ''),
 ('7206016308760001', 'Almida', '1976-08-23', '085241060432', 'Perempuan', '2021-09-15 10:01:00', 'Desa lee', 'Kepala desa'),
 ('720602150173000', 'Benilemba', '1973-01-15', '', 'Laki-Laki', '2021-09-07 09:58:00', 'Morowali Utara', 'PNS'),
 ('7206021501730002', 'Benilemba', '1973-01-15', '085343502789', 'Laki-Laki', '2021-11-03 11:05:00', 'Morowali', 'PNS'),
@@ -414,7 +412,7 @@ INSERT INTO `bukutamu_profil_pengunjung` (`no_id`, `nama`, `tgl_lahir`, `no_tlp`
 ('7271032709800007', 'Marno', '1980-09-27', '08114584577', 'Laki-Laki', '2021-03-19 09:36:00', 'Petobo', 'Pengacara'),
 ('7271032803700001', 'Nasrul Jamaludin, SH', '1970-04-28', '081247411167', 'Laki-Laki', '2021-04-13 11:01:00', 'Jl.Panjaitan', 'Advokat'),
 ('7271032910600002', 'Abdul Gafar Salam, SH', '1960-10-29', '085394346045', 'Laki-Laki', '2021-10-26 11:14:00', 'Lolub utara', 'Advokat'),
-('7271034909810007', 'Anita', '1981-09-09', '085255811299', 'Perempuan', '2021-05-10 10:13:00', 'Jl.Ongka Malino', 'Advokat'),
+('7271034909810007', 'Anita', '1981-09-09', '085255811299', 'Perempuan', '2021-05-10 10:13:00', 'Jl.Ongka Malino', 'Advokay'),
 ('7271035704910006', 'Fitriani Toliango,SH', '1991-04-17', '085241024210', 'Perempuan', '2021-10-21 11:02:00', 'Palupi', 'Advokat'),
 ('7271036205760002', 'Milan kartika', '1976-05-22', '081242057076', 'Perempuan', '2021-04-06 12:51:00', 'Btn palupi blok bs3', 'Pegawai negeri sipil'),
 ('7271036604680002', 'Alfrin magdalena', '1968-04-26', '081283490749', 'Perempuan', '2021-09-16 10:28:00', 'Karanjalembah', 'PNS'),
@@ -453,13 +451,6 @@ CREATE TABLE `hukum_regiskuasa` (
   `nomor_perkara` varchar(128) NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `hukum_regiskuasa`
---
-
-INSERT INTO `hukum_regiskuasa` (`id`, `nomor_regiskuasa`, `tgl_regiskuasa`, `nomor_suratkuasa`, `tgl_suratkuasa`, `nama_pemberikuasa`, `nama_penerimakuasa`, `nomor_perkara`, `keterangan`) VALUES
-(1, '1/Daft.SK/2021/PTUN.PL', '2022-01-03', '11/Widjaya Law/VIII/2021', '2021-12-29', 'Norman Kamaru', 'Widjaya SH.MH.', '1/G/2022/PTUN.PL', 'Kuasa Penggugat');
 
 -- --------------------------------------------------------
 
@@ -545,7 +536,6 @@ CREATE TABLE `survei_hasil_ipk` (
   `jenis_kelamin` varchar(20) NOT NULL,
   `pendidikan` varchar(128) NOT NULL,
   `pekerjaan` varchar(128) NOT NULL,
-  `tanggal` datetime DEFAULT NULL,
   `manipulasi_peraturan` int(2) NOT NULL,
   `penyalahgunaan_jabatan` int(2) NOT NULL,
   `menjual_pengaruh` int(2) NOT NULL,
@@ -562,11 +552,10 @@ CREATE TABLE `survei_hasil_ipk` (
 -- Dumping data for table `survei_hasil_ipk`
 --
 
-INSERT INTO `survei_hasil_ipk` (`id`, `nama`, `instansi`, `umur`, `jenis_kelamin`, `pendidikan`, `pekerjaan`, `tanggal`, `manipulasi_peraturan`, `penyalahgunaan_jabatan`, `menjual_pengaruh`, `transaksi_biaya`, `biaya_tambahan`, `hadiah`, `transparansi_biaya`, `percaloan`, `perbuatan_curang`, `transaksi_rahasia`) VALUES
-(1, 'Aditya Reza Gusnanda', 'Mahkamah Agung RI', 26, 'Laki-Laki', 'Diploma 3', 'PNS', '2021-12-10 12:51:01', 6, 5, 4, 3, 2, 1, 2, 3, 4, 5),
-(2, 'Joko Susilo', 'Anonim', 19, 'Laki-Laki', 'SMA', 'Pegawai', '2021-12-10 12:51:11', 1, 1, 1, 1, 6, 6, 6, 6, 6, 6),
-(6, 'Cipto Anugerah', 'PT Sumber Jaya', 35, 'Laki-Laki', 'S2', 'Manager', '2021-12-12 12:26:24', 2, 4, 3, 5, 3, 2, 3, 4, 5, 3),
-(7, '', '', 34, 'Perempuan', '-', '-', '2021-12-12 12:56:36', 5, 6, 4, 5, 3, 3, 5, 4, 3, 5);
+INSERT INTO `survei_hasil_ipk` (`id`, `nama`, `instansi`, `umur`, `jenis_kelamin`, `pendidikan`, `pekerjaan`, `manipulasi_peraturan`, `penyalahgunaan_jabatan`, `menjual_pengaruh`, `transaksi_biaya`, `biaya_tambahan`, `hadiah`, `transparansi_biaya`, `percaloan`, `perbuatan_curang`, `transaksi_rahasia`) VALUES
+(1, 'Aditya Reza Gusnanda', 'Mahkamah Agung RI', 26, 'Laki-Laki', 'Diploma 3', 'PNS', 6, 5, 4, 3, 2, 1, 2, 3, 4, 5),
+(2, 'Joko Susilo', 'Anonim', 19, 'Laki-Laki', 'SMA', 'Pegawai', 1, 1, 1, 1, 6, 6, 6, 6, 6, 6),
+(3, '', '', 25, 'Laki-Laki', 'SMA', 'Pegawai', 1, 4, 5, 3, 3, 4, 5, 6, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -675,13 +664,12 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (5, 1, 4),
 (6, 1, 5),
 (7, 3, 2),
+(8, 3, 3),
 (9, 2, 3),
 (10, 2, 4),
 (11, 2, 5),
 (12, 4, 4),
-(13, 4, 5),
-(14, 5, 3),
-(15, 5, 2);
+(13, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -752,9 +740,8 @@ CREATE TABLE `user_role` (
 INSERT INTO `user_role` (`id`, `role`) VALUES
 (1, 'Administrator'),
 (2, 'User'),
-(3, 'Pengguna_baru'),
-(4, 'Operator_sikm'),
-(5, 'Operator_hukum');
+(3, 'Operator_hukum'),
+(4, 'Operator_sikm');
 
 -- --------------------------------------------------------
 
@@ -777,7 +764,7 @@ CREATE TABLE `user_sub_menu` (
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUES
 (1, '1', 'Dashboard', 'admin', '1'),
 (2, '2', 'Profil Saya', 'user', '1'),
-(3, '3', 'Dashboard', 'hukum/dashboard', '1'),
+(3, '3', 'Register Surat Kuasa', 'hukum', '1'),
 (7, '1', 'Role', 'admin/role', '1'),
 (8, '1', 'Manajemen Menu', 'admin/menu', '1'),
 (9, '1', 'Manajemen Submenu', 'admin/submenu', '1'),
@@ -785,14 +772,11 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `is_active`) VALUE
 (11, '1', 'Pengaturan Satuan Kerja', 'admin/setupSatker', '1'),
 (12, '2', 'Ubah Kata Sandi', 'user/changePass', '1'),
 (13, '1', 'Manajemen User', 'admin/user', '1'),
-(14, '4', 'Dashboard', 'bukutamu/dashboard', '1'),
-(15, '4', 'Data Profil Pengunjung', 'bukutamu/profil_pengunjung', '1'),
-(16, '5', 'Dashboard', 'survei/dashboard', '1'),
-(17, '5', 'Survei IKM', 'survei/ikm', '1'),
-(18, '5', 'Survei IPK', 'survei/ipk', '1'),
-(21, '4', 'Daftar Kunjungan', 'bukutamu/daftar_kunjungan', '1'),
-(22, '5', 'Manajemen Pertanyaan', 'survei/pertanyaan', '1'),
-(23, '3', 'Register Surat Kuasa', 'hukum', '1');
+(14, '4', 'Data Profil Pengunjung', 'bukutamu/profil_pengunjung', '1'),
+(15, '4', 'Daftar Kunjungan', 'bukutamu/daftar_kunjungan', '1'),
+(16, '5', 'Survei IKM', 'survei/ikm', '1'),
+(17, '5', 'Survei IPK', 'survei/ipk', '1'),
+(18, '5', 'Manajemen Pertanyaan', 'survei/pertanyaan', '1');
 
 -- --------------------------------------------------------
 
@@ -902,13 +886,13 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `bukutamu_daftar_kunjungan`
 --
 ALTER TABLE `bukutamu_daftar_kunjungan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 
 --
 -- AUTO_INCREMENT for table `hukum_regiskuasa`
 --
 ALTER TABLE `hukum_regiskuasa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `setup_satker`
@@ -920,13 +904,13 @@ ALTER TABLE `setup_satker`
 -- AUTO_INCREMENT for table `survei_hasil_ikm`
 --
 ALTER TABLE `survei_hasil_ikm`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `survei_hasil_ipk`
 --
 ALTER TABLE `survei_hasil_ipk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `survei_pertanyaan`
@@ -938,7 +922,7 @@ ALTER TABLE `survei_pertanyaan`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_jabatan`
@@ -956,13 +940,13 @@ ALTER TABLE `user_menu`
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

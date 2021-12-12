@@ -74,6 +74,7 @@ class Survei_model extends CI_Model
 
     public function newSurveiIpk()
     {
+        $today = date('Y-m-d H:i:s');
         $data = [
             'nama' => htmlspecialchars($this->input->post('nama', true)),
             'instansi' => htmlspecialchars($this->input->post('instansi', true)),
@@ -81,6 +82,7 @@ class Survei_model extends CI_Model
             'jenis_kelamin' => htmlspecialchars($this->input->post('jenis_kelamin', true)),
             'pendidikan' => htmlspecialchars($this->input->post('pendidikan', true)),
             'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
+            'tanggal' => $today,
             'manipulasi_peraturan' => htmlspecialchars($this->input->post('manipulasi_peraturan', true)),
             'penyalahgunaan_jabatan' => htmlspecialchars($this->input->post('penyalahgunaan_jabatan', true)),
             'menjual_pengaruh' => htmlspecialchars($this->input->post('menjual_pengaruh', true)),
@@ -179,5 +181,29 @@ class Survei_model extends CI_Model
     {
         $this->db->delete('survei_hasil_ipk', ['id' => $id]);
         $this->session->set_flashdata('message', 'Dihapus');
+    }
+
+    public function total_responden_ikm()
+    {
+        return $this->db->count_all_results('survei_hasil_ikm');
+    }
+
+    public function total_responden_ipk()
+    {
+        return $this->db->count_all_results('survei_hasil_ipk');
+    }
+
+    public function responden_ikm_bulan()
+    {
+        $this->db->select('tanggal, COUNT(tanggal) as total');
+        $this->db->where('MONTH(tanggal)', date('m'));
+        return $this->db->get('survei_hasil_ikm')->result_array();
+    }
+
+    public function responden_ipk_bulan()
+    {
+        $this->db->select('tanggal, COUNT(tanggal) as total');
+        $this->db->where('MONTH(tanggal)', date('m'));
+        return $this->db->get('survei_hasil_ipk')->result_array();
     }
 }

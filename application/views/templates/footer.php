@@ -26,6 +26,8 @@
 <script src="<?= base_url('assets/'); ?>js/respond.min.js"></script>
 <script class="include" type="text/javascript" src="<?= base_url('assets/'); ?>js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="<?= base_url('assets/') ?>js/jquery-ui.js"></script>
+<script src="<?= base_url('vendor/flatlab/') ?>assets/morris.js-0.4.3/morris.min.js" type="text/javascript"></script>
+<script src="<?= base_url('vendor/flatlab/') ?>assets/morris.js-0.4.3/raphael-min.js" type="text/javascript"></script>
 
 <!-- Script Notification Sweetalert2-->
 <script src="<?= base_url('node_modules/sweetalert2/dist/sweetalert2.all.min.js') ?>"></script>
@@ -144,6 +146,26 @@
             this.value = this.value.toLowerCase();
         }
     });
+</script>
+
+<!-- Morris Chart -->
+<script>
+    var Script = function() {
+        //morris chart
+        $(function() {
+            Morris.Donut({
+                element: 'hero-donut',
+                data: [
+                    <?php
+                    foreach ($jenis_kelamin as $jk) {
+                        echo "{ label: '$jk[jenis_kelamin]', value: '$jk[total]' },";
+                    }
+                    ?>
+                ],
+                colors: ['#41cac8', '#FF6C60']
+            });
+        });
+    }();
 </script>
 
 </body>

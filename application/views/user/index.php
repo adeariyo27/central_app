@@ -8,20 +8,20 @@
             </div>
         </div>
         <div class="row">
-            <aside class="profile-nav col-lg-3">
+            <aside class="profile-nav col-lg-5">
                 <section class="panel">
                     <div class="user-heading round">
                         <a href="#">
                             <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="">
                         </a>
-                        <h1 class="mt-4"><?= $user['name']; ?></h1>
-                        <p><?= $user['email'] ?></p>
-                        <button type="button" class="btn btn-md btn-light" onclick="location.href='<?= base_url('user/edit'); ?>';">Perbaharui Profil</button>
+                        <h1 class="mt-4" style="font-weight: bold; letter-spacing:1.5px;"><?= $user['name']; ?></h1>
+                        <h6 style="letter-spacing:1.5px;"><?= $user['email'] ?></h6>
+                        <button type="button" class="btn btn-md btn-light mt-3" onclick="location.href='<?= base_url('user/edit'); ?>';">Perbaharui Profil</button>
                 </section>
             </aside>
-            <aside class="profile-info col-lg-9">
+            <aside class="profile-info col-lg-7">
                 <section class="panel">
-                    <div class="bio-graph-heading">
+                    <div class="bio-graph-heading font-weight-bold" style="letter-spacing: 2px">
                         Biodata Lengkap Pengguna Aplikasi
                     </div>
                     <div class="panel-body bio-graph-info">

@@ -178,4 +178,58 @@ class Bukutamu_model extends CI_Model
         $this->db->delete('bukutamu_daftar_kunjungan', ['id' => $id]);
         $this->session->set_flashdata('message', 'Dihapus');
     }
+
+    public function VisitorTodayDashboard()
+    {
+        $today = date('Y-m-d');
+        $this->db->order_by('tanggal', 'ASC');
+        $q = $this->db->like('tanggal', $today);
+        return $this->db->get('bukutamu_daftar_kunjungan')->result_array();
+    }
+
+    public function jk()
+    {
+        $this->db->select('jenis_kelamin, COUNT(jenis_kelamin) as total');
+        $this->db->group_by('jenis_kelamin');
+        return $this->db->get('bukutamu_profil_pengunjung')->result_array();
+    }
+
+    public function job()
+    {
+        $this->db->select('pekerjaan, COUNT(pekerjaan) as total');
+        $this->db->group_by('pekerjaan');
+        $this->db->order_by('total', 'DESC');
+        $this->db->limit(6);
+        return $this->db->get('bukutamu_profil_pengunjung')->result_array();
+    }
+
+    public function totalPengunjung()
+    {
+        return $this->db->count_all_results('bukutamu_profil_pengunjung');
+    }
+
+    public function totalPengunjungBln()
+    {
+        $this->db->select('tanggal, COUNT(tanggal) as total');
+        $this->db->where('MONTH(tanggal)', date('m'));
+        return $this->db->get('bukutamu_daftar_kunjungan')->result_array();
+    }
+
+    public function totalPengunjungThn()
+    {
+        $this->db->select('tanggal, COUNT(tanggal) as total');
+        $this->db->where('YEAR(tanggal)', date('Y'));
+        return $this->db->get('bukutamu_daftar_kunjungan')->result_array();
+    }
+
+    public function mostVisit()
+    {
+        $this->db->select('nama, COUNT(nama) as total');
+        $this->db->group_by('nama');
+        $this->db->order_by('total', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get('bukutamu_daftar_kunjungan')->result_array();
+        // var_dump($q);
+        // die;
+    }
 }

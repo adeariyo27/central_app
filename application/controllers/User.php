@@ -14,6 +14,7 @@ class User extends CI_Controller
     {
         error_reporting(0);
         $data['title'] = 'Profil Saya';
+        $data['link'] = 'user';
         $data['active_menu'] = 'User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['jabatanByUser'] = $this->User_model->getUserJabatan();
@@ -29,6 +30,7 @@ class User extends CI_Controller
     {
         error_reporting(0);
         $data['title'] = 'Perbaharui Profil';
+        $data['link'] = 'user';
         $data['active_menu'] = 'User';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['jabatan'] = $this->User_model->getAllJabatan();
@@ -50,6 +52,7 @@ class User extends CI_Controller
     public function changePass()
     {
         $data['title'] = 'Ubah Kata Sandi';
+        $data['link'] = 'user/changePass';
         $data['active_menu'] = 'User';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 

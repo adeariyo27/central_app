@@ -19,6 +19,7 @@ class Hukum extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Register Surat Kuasa';
+            $data['link'] = 'hukum';
             $data['active_menu'] = 'Hukum';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['regiskuasa'] = $this->db->get('hukum_regiskuasa')->result_array();
@@ -33,6 +34,19 @@ class Hukum extends CI_Controller
         }
     }
 
+    public function dashboard()
+    {
+        $data['title'] = 'Dashboard';
+        $data['link'] = 'hukum/dashboard';
+        $data['active_menu'] = 'Hukum';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('hukum/dashboard', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function editregiskuasa($id)
     {
         $this->form_validation->set_rules('nomor_regiskuasa', 'Nomor Register Kuasa', 'required|trim');
@@ -42,6 +56,7 @@ class Hukum extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Register Surat Kuasa';
+            $data['link'] = 'hukum';
             $data['active_menu'] = 'Hukum';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['regiskuasa'] = $this->Hukum_model->getRegisKuasaByID($id);

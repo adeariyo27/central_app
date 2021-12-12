@@ -14,6 +14,7 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard';
+        $data['link'] = 'admin';
         $data['active_menu'] = 'Admin';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->view('templates/header', $data);
@@ -31,6 +32,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Role';
+            $data['link'] = 'admin/role';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['role'] = $this->db->get('user_role')->result_array();
@@ -57,6 +59,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Role';
+            $data['link'] = 'admin/role';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['role'] = $this->Admin_model->getRoleByID($id);
@@ -82,6 +85,7 @@ class Admin extends CI_Controller
     public function roleaccess($role_id)
     {
         $data['title'] = 'Role';
+        $data['link'] = 'admin/role';
         $data['active_menu'] = 'Admin';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
@@ -126,6 +130,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Manajemen Menu';
+            $data['link'] = 'admin/menu';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -153,6 +158,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Manajemen Menu';
+            $data['link'] = 'admin/menu';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['menu'] = $this->Admin_model->getMenuByID($id);
@@ -185,6 +191,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Manajemen Submenu';
+            $data['link'] = 'admin/submenu';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -216,6 +223,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Manajemen Submenu';
+            $data['link'] = 'admin/submenu';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -242,6 +250,7 @@ class Admin extends CI_Controller
     public function icon()
     {
         $data['title'] = 'Icon Font Awesome';
+        $data['link'] = 'admin/icon';
         $data['active_menu'] = 'Admin';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
 
@@ -257,6 +266,7 @@ class Admin extends CI_Controller
     public function user()
     {
         $data['title'] = 'Manajemen User';
+        $data['link'] = 'admin/user';
         $data['active_menu'] = 'Admin';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['user_detail'] = $this->Admin_model->getUserDetail();
@@ -277,6 +287,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Manajemen User';
+            $data['link'] = 'admin/user';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['user_detail'] = $this->Admin_model->getUserDetailByID($id);
@@ -310,6 +321,7 @@ class Admin extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Pengaturan Satuan Kerja';
+            $data['link'] = 'admin/setupSatker';
             $data['active_menu'] = 'Admin';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['satker'] = $this->db->get('setup_satker')->result_array();

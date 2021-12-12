@@ -35,7 +35,7 @@
 
                     <?php foreach ($subMenu as $sm) : ?>
                         <ul class="sub">
-                            <li class="<?php if ($title == $sm['title']) {
+                            <li class="<?php if ($link == $sm['url']) {
                                             echo "active";
                                         } ?>"><a href="<?= base_url($sm['url']) ?>"><?= $sm['title']; ?></a></li>
                         </ul>

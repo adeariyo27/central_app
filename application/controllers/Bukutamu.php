@@ -11,7 +11,7 @@ class Bukutamu extends CI_Controller
 
     public function index()
     {
-        $this->form_validation->set_rules('no_id', 'Nomor Identitas', 'required|trim|is_unique[bukutamu_profil_pengunjung.no_id]');
+        $this->form_validation->set_rules('no_id', 'Nomor Identitas', 'required|trim');
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('tanggal', 'Tanggal Kunjungan', 'required|trim');
         $this->form_validation->set_rules('keperluan', 'Keperluan', 'required|trim');
@@ -26,9 +26,30 @@ class Bukutamu extends CI_Controller
         }
     }
 
+    public function dashboard()
+    {
+        $data['title'] = 'Dashboard';
+        $data['link'] = 'bukutamu/dashboard';
+        $data['active_menu'] = 'Buku Tamu Digital';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['today_visitor'] = $this->Bukutamu_model->VisitorTodayDashboard();
+        $data['jenis_kelamin'] = $this->Bukutamu_model->jk();
+        $data['pekerjaan'] = $this->Bukutamu_model->job();
+        $data['total_pengunjung'] = $this->Bukutamu_model->totalPengunjung();
+        $data['total_pengunjung_bln'] = $this->Bukutamu_model->totalPengunjungBln();
+        $data['total_pengunjung_thn'] = $this->Bukutamu_model->totalPengunjungThn();
+        $data['most_visit'] = $this->Bukutamu_model->mostVisit();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('bukutamu/dashboard', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function profil_pengunjung()
     {
         $data['title'] = 'Data Profil Pengunjung';
+        $data['link'] = 'bukutamu/profil_pengunjung';
         $data['active_menu'] = 'Buku Tamu Digital';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['profilpengunjung'] = $this->Bukutamu_model->readAll();
@@ -43,6 +64,7 @@ class Bukutamu extends CI_Controller
     public function daftar_kunjungan()
     {
         $data['title'] = 'Daftar Kunjungan';
+        $data['link'] = 'bukutamu/daftar_kunjungan';
         $data['active_menu'] = 'Buku Tamu Digital';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $data['daftarkunjungan'] = $this->Bukutamu_model->readAllKunjungan();
@@ -208,6 +230,7 @@ class Bukutamu extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Data Profil Pengunjung';
+            $data['link'] = 'bukutamu/profil_pegunjung';
             $data['active_menu'] = 'Buku Tamu Digital';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['profilpengunjung'] = $this->Bukutamu_model->getProfilPengunjungByID($id);
@@ -233,6 +256,7 @@ class Bukutamu extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Daftar Kunjungan';
+            $data['link'] = 'bukutamu/daftar_kunjungan';
             $data['active_menu'] = 'Buku Tamu Digital';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['daftarkunjungan'] = $this->Bukutamu_model->getDaftarKunjunganByID($id);

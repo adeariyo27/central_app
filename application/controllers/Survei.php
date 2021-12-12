@@ -41,6 +41,24 @@ class Survei extends CI_Controller
         }
     }
 
+    public function dashboard()
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Dashboard';
+        $data['link'] = 'survei/dashboard';
+        $data['active_menu'] = 'Survei';
+        $data['total_responden_ikm'] = $this->Survei_model->total_responden_ikm();
+        $data['total_responden_ipk'] = $this->Survei_model->total_responden_ipk();
+        $data['responden_ikm_bulan'] = $this->Survei_model->responden_ikm_bulan();
+        $data['responden_ipk_bulan'] = $this->Survei_model->responden_ipk_bulan();
+        $tanggal = date('m');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('survei/dashboard', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function ikm()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
@@ -50,6 +68,7 @@ class Survei extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['title'] = 'Survei IKM';
+            $data['link'] = 'survei/ikm';
             $data['active_menu'] = 'Survei';
             $data['ikm'] = $this->Survei_model->readIkm();
             $data['penandatangan'] = $this->Survei_model->getPenandatangan();
@@ -73,6 +92,7 @@ class Survei extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['title'] = 'Survei IPK';
+            $data['link'] = 'survei/ipk';
             $data['active_menu'] = 'Survei';
             $data['ipk'] = $this->Survei_model->readIpk();
             $data['penandatangan'] = $this->Survei_model->getPenandatangan();
@@ -97,6 +117,7 @@ class Survei extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
             $data['title'] = 'Manajemen Pertanyaan';
+            $data['link'] = 'survei/pertanyaan';
             $data['active_menu'] = 'Survei';
             $data['pertanyaan'] = $this->Survei_model->getPertanyaanIkm();
             $this->load->view('templates/header', $data);

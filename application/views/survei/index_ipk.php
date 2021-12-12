@@ -25,7 +25,6 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="<?= base_url('vendor/survey-form/html/') ?>css/custom.css" rel="stylesheet">
-    <link href="<?= base_url('vendor/jQKeyboard-master/') ?>jQKeyboard.css" rel="stylesheet">
 
 </head>
 
@@ -155,15 +154,15 @@
                                         <h3 class="main_question">Mohon untuk mengisi data diri dibawah ini</h3>
                                         <div class="form-group">
                                             <label for="name">Nama</label>
-                                            <input type="text" name="nama" id="name testvirtual" class="form-control jQKeyboard">
+                                            <input type="text" name="nama" id="name" class="form-control keyboard">
                                         </div>
                                         <div class="form-group">
                                             <label for="instansi">Instansi / Perusahaan</label>
-                                            <input type="text" name="instansi" id="instansi" class="form-control">
+                                            <input type="text" name="instansi" id="instansi" class="form-control keyboard">
                                         </div>
                                         <div class="form-group">
                                             <label for="umur">Umur</label>
-                                            <input type="text" name="umur" id="umur" class="form-control required">
+                                            <input type="text" name="umur" id="umur" class="form-control required keyboard">
                                         </div>
                                         <div class="form-group">
                                             <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -175,11 +174,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="pendidikan">Pendidikan</label>
-                                            <input type="text" name="pendidikan" id="pendidikan" class="form-control required">
+                                            <input type="text" name="pendidikan" id="pendidikan" class="form-control required keyboard">
                                         </div>
                                         <div class="form-group">
                                             <label for="pekerjaan">Pekerjaan</label>
-                                            <input type="text" name="pekerjaan" id="pekerjaan" class="form-control required">
+                                            <input type="text" name="pekerjaan" id="pekerjaan" class="form-control required keyboard">
                                         </div>
                                         <!-- /row -->
                                         <!-- <div class="form-group terms">
