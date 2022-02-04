@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Hukum_model extends CI_Model
 {
+    function getAllRegisKuasa()
+    {
+        $query = $this->db->query("SELECT * FROM hukum_regiskuasa order by id desc");
+        return $query->result_array();
+    }
+
     public function addRegisKuasa()
     {
         $data = [
@@ -96,5 +102,29 @@ class Hukum_model extends CI_Model
         $this->db->order_by('id', 'ASC');
         $this->db->limit(10);
         return $this->db->get('hukum_regiskuasa')->result();
+    }
+
+    function getTotalSuratKuasaToday()
+    {
+        $query = $this->db->query("SELECT * FROM hukum_regiskuasa WHERE tgl_regiskuasa = CURDATE()");
+        return $query->num_rows();
+    }
+
+    function getTotalSuratKuasaMonth()
+    {
+        $query = $this->db->query("SELECT * FROM hukum_regiskuasa WHERE MONTH(tgl_regiskuasa) = MONTH(CURDATE())");
+        return $query->num_rows();
+    }
+
+    function getTotalSuratKuasaYear()
+    {
+        $query = $this->db->query("SELECT * FROM hukum_regiskuasa WHERE YEAR(tgl_regiskuasa) = YEAR(CURDATE())");
+        return $query->num_rows();
+    }
+
+    function getTotalSuratKuasa()
+    {
+        $query = $this->db->query("SELECT * FROM hukum_regiskuasa");
+        return $query->num_rows();
     }
 }

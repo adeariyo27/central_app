@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2021 at 12:44 PM
+-- Generation Time: Dec 12, 2021 at 03:31 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bukutamu_daftar_kunjungan` (
   `id` int(11) NOT NULL,
-  `nama` varchar(128) NOT NULL,
-  `no_tlp` varchar(128) NOT NULL,
-  `tanggal` datetime NOT NULL,
-  `alamat` text NOT NULL,
-  `pekerjaan` varchar(128) NOT NULL,
-  `keperluan` varchar(128) NOT NULL
+  `nama` varchar(128) DEFAULT NULL,
+  `no_tlp` varchar(128) DEFAULT NULL,
+  `tanggal` datetime DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
+  `pekerjaan` varchar(128) DEFAULT NULL,
+  `keperluan` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -267,8 +267,9 @@ INSERT INTO `bukutamu_daftar_kunjungan` (`id`, `nama`, `no_tlp`, `tanggal`, `ala
 (250, 'Indra Djaya Petalolo', '-', '2021-11-16 10:19:00', 'Palu', 'Wiraswasta', 'Sidang'),
 (251, 'Tri Samsudin marjuki', '085790306303', '2021-11-16 10:20:00', 'Palu', 'PNS', 'Sidang'),
 (252, 'Arpin E.Ido', '082271669602', '2021-11-16 10:23:00', 'Desa Biga', 'PNS', 'Sidang'),
-(253, 'Aditya Reza Gusnanda', '085156161496', '2021-12-12 22:52:00', 'Medan', 'PNS', 'Urus Surat Keterangan'),
-(254, 'Abdul rahman', '08534241453', '2021-12-12 22:55:00', 'Jl. Moh hatta no. 28', 'Wiraswasta', 'Bertanya Jadwal Sidang');
+(253, 'mohammad aidil', '081244106657', '2021-12-09 10:38:00', 'palu', 'Advokat', 'sidang'),
+(254, 'Retno Prandari', '081355540194', '2021-12-09 09:11:00', 'sigi', 'PNS', 'sidang'),
+(255, 'Ujang Hermansyah', '081243662122', '2021-12-10 08:52:00', 'PALU', 'Advokat', 'Sidang');
 
 -- --------------------------------------------------------
 
@@ -278,13 +279,13 @@ INSERT INTO `bukutamu_daftar_kunjungan` (`id`, `nama`, `no_tlp`, `tanggal`, `ala
 
 CREATE TABLE `bukutamu_profil_pengunjung` (
   `no_id` varchar(128) NOT NULL,
-  `nama` varchar(128) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `no_tlp` varchar(128) NOT NULL,
-  `jenis_kelamin` varchar(20) NOT NULL,
-  `tanggal` datetime NOT NULL,
-  `alamat` text NOT NULL,
-  `pekerjaan` varchar(128) NOT NULL
+  `nama` varchar(128) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `no_tlp` varchar(128) DEFAULT NULL,
+  `jenis_kelamin` varchar(60) DEFAULT NULL,
+  `tanggal` datetime DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
+  `pekerjaan` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -297,12 +298,13 @@ INSERT INTO `bukutamu_profil_pengunjung` (`no_id`, `nama`, `tgl_lahir`, `no_tlp`
 ('1271042312610002', 'Wisetyo sasongko', '1961-12-23', '081376370628', 'Laki-Laki', '2021-09-15 09:51:00', 'Lembontoru', 'Swasta'),
 ('1307051911070002', 'arie muhammad haikal', '1987-11-19', '08118331187', 'Laki-Laki', '2021-09-23 10:54:00', 'jakarta selatan', 'legal audit ojk'),
 ('15.01949', 'Syahrudin,S.H', '1984-08-04', '085241199222', 'Laki-Laki', '2021-03-25 11:27:00', 'Jl.Yosudarso No 1 D', 'Advokat'),
-('1984010320091210', 'Hery', '1984-01-03', '081390545943', 'Laki-Laki', '2021-10-05 20:41:00', 'Jakarta', 'PNS'),
+('1984010320091210', 'Hery', '1984-01-03', '081390545943', 'Laki-Laki', '2021-10-05 20:41:00', 'Jakarta', 'pNS'),
 ('2171100601799010', 'A SENG', '1979-01-06', '082135728227', 'Laki-Laki', '2021-10-21 10:45:00', 'Karangsuci cilacap', 'Wiraswasta'),
 ('24217605000387', 'Sahrul,SH', '1976-05-01', '081341112741', 'Laki-Laki', '2021-11-11 10:35:00', 'Roviga', 'Advokat'),
 ('3174062601643', 'Samsul Samoeri,SH,MM', '1964-01-26', '081297500756', 'Laki-Laki', '2021-11-11 10:23:00', 'Jakarta', 'Karyawan swasta'),
 ('3273020205780002', 'Harpen pandapotana', '1978-05-02', '082369962424', 'Laki-Laki', '2021-04-20 10:22:00', 'Komp. The mansion', 'Pengacara'),
 ('3312131308880002', 'Agus Setyawan', '1988-08-13', '085398882211', 'Laki-Laki', '2021-10-21 10:55:00', 'Perum griya paniki indah', 'Karyawan BUMN'),
+('3374105806830002', 'Retno Prandari', '0000-00-00', '081355540194', 'Perempuan', '2021-12-09 09:11:00', 'sigi', 'PNS'),
 ('3502062009950001', 'Tri Samsudin marjuki', '1995-09-20', '085790306303', 'Laki-Laki', '2021-11-09 09:51:00', 'Palu', 'PNS'),
 ('3578011804680002', 'sudibyo christian', '2021-10-06', '082132228264', 'Laki-Laki', '2021-10-06 10:22:00', 'surabaya', 'Advokat'),
 ('3578150506910002', 'Rudi Hadiswarno', '1969-01-12', '082187938789', 'Perempuan', '2021-09-16 10:41:00', 'Bpn toli2', 'PNS'),
@@ -345,7 +347,7 @@ INSERT INTO `bukutamu_profil_pengunjung` (`no_id`, `nama`, `tgl_lahir`, `no_tlp`
 ('7205061001710001', 'Supardi', '1971-03-10', '081286270902', 'Laki-Laki', '2021-03-24 08:47:00', 'Surawele blok gladiol no 18', 'PNS'),
 ('7205061007171000', 'Supardi A Mokoapat', '1971-01-10', '081286270902', 'Laki-Laki', '2021-09-08 10:34:00', 'Lasoani', 'PNS'),
 ('7206012211940003', 'Trisno putrawan', '1994-12-22', '082361851569', 'Laki-Laki', '2021-09-15 10:12:00', 'Desa lee', 'Sekdes'),
-('7206012503900001', 'Wisnu uruwo', '1990-03-25', '085395458359', 'Laki-Laki', '2021-09-15 10:14:00', 'Desa lee', ''),
+('7206012503900001', 'Wisnu uruwo', '1990-03-25', '085395458359', '', '2021-09-15 10:14:00', 'Desa lee', ''),
 ('7206016308760001', 'Almida', '1976-08-23', '085241060432', 'Perempuan', '2021-09-15 10:01:00', 'Desa lee', 'Kepala desa'),
 ('720602150173000', 'Benilemba', '1973-01-15', '', 'Laki-Laki', '2021-09-07 09:58:00', 'Morowali Utara', 'PNS'),
 ('7206021501730002', 'Benilemba', '1973-01-15', '085343502789', 'Laki-Laki', '2021-11-03 11:05:00', 'Morowali', 'PNS'),
@@ -404,6 +406,7 @@ INSERT INTO `bukutamu_profil_pengunjung` (`no_id`, `nama`, `tgl_lahir`, `no_tlp`
 ('7271031402650002', 'Felis Manurung, SH', '2021-03-25', '', 'Perempuan', '2021-03-25 09:49:00', '', 'Advokat'),
 ('7271031411840006', 'Ivan Dendi Salmon, SH', '1984-11-14', '081244683384', 'Laki-Laki', '2021-09-08 10:28:00', 'Besusu', 'Advokat'),
 ('7271031502790001', 'Dedy Bronson Hutabarat', '2021-03-25', '082192163035', 'Perempuan', '2021-03-25 09:46:00', 'BTN PERMAI BLOK - 3', 'Advokat'),
+('7271031804910003', 'mohammad aidil', '1991-04-18', '081244106657', 'Laki-Laki', '2021-12-09 10:38:00', 'palu', 'Advokat'),
 ('727103180685000', 'Triyanto Wiguna', '1985-07-18', '082393509920', 'Laki-Laki', '2021-07-06 09:10:00', 'Jl.Maleo', 'PNS'),
 ('7271031906870003', 'Erwin', '1987-06-19', '085241255043', 'Laki-Laki', '2021-09-08 11:20:00', 'Palu', 'PNS'),
 ('7271031910680001', 'Dr.Muslimin', '1968-10-19', '081211332188', 'Laki-Laki', '2021-11-11 10:31:00', 'Tanamodindi', 'Advokat'),
@@ -414,10 +417,11 @@ INSERT INTO `bukutamu_profil_pengunjung` (`no_id`, `nama`, `tgl_lahir`, `no_tlp`
 ('7271032709800007', 'Marno', '1980-09-27', '08114584577', 'Laki-Laki', '2021-03-19 09:36:00', 'Petobo', 'Pengacara'),
 ('7271032803700001', 'Nasrul Jamaludin, SH', '1970-04-28', '081247411167', 'Laki-Laki', '2021-04-13 11:01:00', 'Jl.Panjaitan', 'Advokat'),
 ('7271032910600002', 'Abdul Gafar Salam, SH', '1960-10-29', '085394346045', 'Laki-Laki', '2021-10-26 11:14:00', 'Lolub utara', 'Advokat'),
-('7271034909810007', 'Anita', '1981-09-09', '085255811299', 'Perempuan', '2021-05-10 10:13:00', 'Jl.Ongka Malino', 'Advokat'),
+('7271034909810007', 'Anita', '1981-09-09', '085255811299', 'Perempuan', '2021-05-10 10:13:00', 'Jl.Ongka Malino', 'Advokay'),
 ('7271035704910006', 'Fitriani Toliango,SH', '1991-04-17', '085241024210', 'Perempuan', '2021-10-21 11:02:00', 'Palupi', 'Advokat'),
 ('7271036205760002', 'Milan kartika', '1976-05-22', '081242057076', 'Perempuan', '2021-04-06 12:51:00', 'Btn palupi blok bs3', 'Pegawai negeri sipil'),
 ('7271036604680002', 'Alfrin magdalena', '1968-04-26', '081283490749', 'Perempuan', '2021-09-16 10:28:00', 'Karanjalembah', 'PNS'),
+('7271040101820014', 'Ujang Hermansyah', '1982-01-01', '081243662122', 'Laki-Laki', '2021-12-10 08:52:00', 'PALU', 'Advokat'),
 ('727104140967000', 'Hizbudin D Wahab', '1967-11-14', '0811453534', 'Laki-Laki', '2021-09-08 10:12:00', 'Mamboro', 'Advokat'),
 ('7271041409670002', 'Hizbudin D Wahab', '1967-09-14', '08114537574', 'Laki-Laki', '2021-10-21 11:03:00', 'Mamboro', 'Advokat'),
 ('7271041808870004', 'egar m, s.H', '1987-08-08', '081245808797', 'Laki-Laki', '2021-10-07 11:22:00', 'pangeran hidayat', 'Advokat'),
@@ -494,34 +498,34 @@ INSERT INTO `setup_satker` (`id`, `nama_satker`, `alamat_satker`, `kota_satker`,
 
 CREATE TABLE `survei_hasil_ikm` (
   `id` int(10) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `no_tlp` varchar(12) NOT NULL,
-  `tanggal` datetime NOT NULL,
-  `fasilitas_informasi` varchar(128) NOT NULL,
-  `fasilitas_toilet` varchar(128) NOT NULL,
-  `parkir_kendaraan` varchar(128) NOT NULL,
-  `kebersihan` varchar(128) NOT NULL,
-  `taman` varchar(128) NOT NULL,
-  `sarana_ibadah` varchar(128) NOT NULL,
-  `ruang_tunggu` varchar(128) NOT NULL,
-  `sistem_pembayaran` varchar(128) NOT NULL,
-  `pelayanan_pendaftaran` varchar(128) NOT NULL,
-  `persiapan_persidangan` varchar(128) NOT NULL,
-  `fasilitas_ruang_sidang` varchar(128) NOT NULL,
-  `proses_persidangan` varchar(128) NOT NULL,
-  `waktu_pemeriksaan` varchar(128) NOT NULL,
-  `pemeriksaan_setempat` varchar(128) NOT NULL,
-  `profesionalitas_hakim` varchar(128) NOT NULL,
-  `pemberian_salinan_putusan` varchar(128) NOT NULL,
-  `pelayanan_informasi` varchar(128) NOT NULL,
-  `pelayanan_pengaduan` varchar(128) NOT NULL,
-  `pelayanan_persuratan` varchar(128) NOT NULL,
-  `pengembalian_sisa_biaya_panjar` varchar(128) NOT NULL,
-  `permohonan_eksekusi` varchar(128) NOT NULL,
-  `sikap_petugas` varchar(128) NOT NULL,
-  `kemampuan_pengetahuan_petugas` varchar(128) NOT NULL,
-  `penampilan_petugas` varchar(128) NOT NULL,
-  `kritik_saran` text NOT NULL
+  `nama` varchar(150) DEFAULT NULL,
+  `no_tlp` varchar(36) DEFAULT NULL,
+  `tanggal` datetime DEFAULT NULL,
+  `fasilitas_informasi` varchar(384) DEFAULT NULL,
+  `fasilitas_toilet` varchar(384) DEFAULT NULL,
+  `parkir_kendaraan` varchar(384) DEFAULT NULL,
+  `kebersihan` varchar(384) DEFAULT NULL,
+  `taman` varchar(384) DEFAULT NULL,
+  `sarana_ibadah` varchar(384) DEFAULT NULL,
+  `ruang_tunggu` varchar(384) DEFAULT NULL,
+  `sistem_pembayaran` varchar(384) DEFAULT NULL,
+  `pelayanan_pendaftaran` varchar(384) DEFAULT NULL,
+  `persiapan_persidangan` varchar(384) DEFAULT NULL,
+  `fasilitas_ruang_sidang` varchar(384) DEFAULT NULL,
+  `proses_persidangan` varchar(384) DEFAULT NULL,
+  `waktu_pemeriksaan` varchar(384) DEFAULT NULL,
+  `pemeriksaan_setempat` varchar(384) DEFAULT NULL,
+  `profesionalitas_hakim` varchar(384) DEFAULT NULL,
+  `pemberian_salinan_putusan` varchar(384) DEFAULT NULL,
+  `pelayanan_informasi` varchar(384) DEFAULT NULL,
+  `pelayanan_pengaduan` varchar(384) DEFAULT NULL,
+  `pelayanan_persuratan` varchar(384) DEFAULT NULL,
+  `pengembalian_sisa_biaya_panjar` varchar(384) DEFAULT NULL,
+  `permohonan_eksekusi` varchar(384) DEFAULT NULL,
+  `sikap_petugas` varchar(384) DEFAULT NULL,
+  `kemampuan_pengetahuan_petugas` varchar(384) DEFAULT NULL,
+  `penampilan_petugas` varchar(384) DEFAULT NULL,
+  `kritik_saran` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -529,7 +533,9 @@ CREATE TABLE `survei_hasil_ikm` (
 --
 
 INSERT INTO `survei_hasil_ikm` (`id`, `nama`, `no_tlp`, `tanggal`, `fasilitas_informasi`, `fasilitas_toilet`, `parkir_kendaraan`, `kebersihan`, `taman`, `sarana_ibadah`, `ruang_tunggu`, `sistem_pembayaran`, `pelayanan_pendaftaran`, `persiapan_persidangan`, `fasilitas_ruang_sidang`, `proses_persidangan`, `waktu_pemeriksaan`, `pemeriksaan_setempat`, `profesionalitas_hakim`, `pemberian_salinan_putusan`, `pelayanan_informasi`, `pelayanan_pengaduan`, `pelayanan_persuratan`, `pengembalian_sisa_biaya_panjar`, `permohonan_eksekusi`, `sikap_petugas`, `kemampuan_pengetahuan_petugas`, `penampilan_petugas`, `kritik_saran`) VALUES
-(1, 'Aditya Reza Gusnanda', '085277644596', '2021-12-05 03:37:00', 'Sangat Puas', 'Cukup Puas', 'Cukup Puas', 'Puas', 'Sangat Puas', 'Puas', 'Sangat Puas', 'Cukup Puas', 'Cukup Puas', 'Puas', 'Sangat Puas', 'Sangat Puas', 'Cukup Puas', 'Puas', 'Sangat Puas', 'Puas', 'Kurang Puas', 'Cukup Puas', 'Sangat Puas', 'Puas', 'Puas', 'Kurang Puas', 'Puas', 'Kurang Puas', 'Semoga Terus Berbenah!');
+(1, 'Aditya Reza Gusnanda', '085277644596', '2021-12-05 03:37:00', 'Sangat Puas', 'Cukup Puas', 'Cukup Puas', 'Puas', 'Sangat Puas', 'Puas', 'Sangat Puas', 'Cukup Puas', 'Cukup Puas', 'Puas', 'Sangat Puas', 'Sangat Puas', 'Cukup Puas', 'Puas', 'Sangat Puas', 'Puas', 'Kurang Puas', 'Cukup Puas', 'Sangat Puas', 'Puas', 'Puas', 'Kurang Puas', 'Puas', 'Kurang Puas', 'Semoga Terus Berbenah!'),
+(2, 'Asep', '085341112345', '2021-12-09 17:57:00', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', '', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'ok lanjutan'),
+(3, 'SAHRUL', '087762152367', '2021-12-10 09:30:00', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', '', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', 'Sangat Puas', '');
 
 -- --------------------------------------------------------
 
@@ -539,23 +545,23 @@ INSERT INTO `survei_hasil_ikm` (`id`, `nama`, `no_tlp`, `tanggal`, `fasilitas_in
 
 CREATE TABLE `survei_hasil_ipk` (
   `id` int(11) NOT NULL,
-  `nama` varchar(128) NOT NULL,
-  `instansi` varchar(128) NOT NULL,
-  `umur` int(5) NOT NULL,
-  `jenis_kelamin` varchar(20) NOT NULL,
-  `pendidikan` varchar(128) NOT NULL,
-  `pekerjaan` varchar(128) NOT NULL,
+  `nama` varchar(384) DEFAULT NULL,
+  `instansi` varchar(384) DEFAULT NULL,
+  `umur` int(5) DEFAULT NULL,
+  `jenis_kelamin` varchar(60) DEFAULT NULL,
+  `pendidikan` varchar(384) DEFAULT NULL,
+  `pekerjaan` varchar(384) DEFAULT NULL,
   `tanggal` datetime DEFAULT NULL,
-  `manipulasi_peraturan` int(2) NOT NULL,
-  `penyalahgunaan_jabatan` int(2) NOT NULL,
-  `menjual_pengaruh` int(2) NOT NULL,
-  `transaksi_biaya` int(2) NOT NULL,
-  `biaya_tambahan` int(2) NOT NULL,
-  `hadiah` int(2) NOT NULL,
-  `transparansi_biaya` int(2) NOT NULL,
-  `percaloan` int(2) NOT NULL,
-  `perbuatan_curang` int(2) NOT NULL,
-  `transaksi_rahasia` int(2) NOT NULL
+  `manipulasi_peraturan` int(2) DEFAULT NULL,
+  `penyalahgunaan_jabatan` int(2) DEFAULT NULL,
+  `menjual_pengaruh` int(2) DEFAULT NULL,
+  `transaksi_biaya` int(2) DEFAULT NULL,
+  `biaya_tambahan` int(2) DEFAULT NULL,
+  `hadiah` int(2) DEFAULT NULL,
+  `transparansi_biaya` int(2) DEFAULT NULL,
+  `percaloan` int(2) DEFAULT NULL,
+  `perbuatan_curang` int(2) DEFAULT NULL,
+  `transaksi_rahasia` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -563,10 +569,12 @@ CREATE TABLE `survei_hasil_ipk` (
 --
 
 INSERT INTO `survei_hasil_ipk` (`id`, `nama`, `instansi`, `umur`, `jenis_kelamin`, `pendidikan`, `pekerjaan`, `tanggal`, `manipulasi_peraturan`, `penyalahgunaan_jabatan`, `menjual_pengaruh`, `transaksi_biaya`, `biaya_tambahan`, `hadiah`, `transparansi_biaya`, `percaloan`, `perbuatan_curang`, `transaksi_rahasia`) VALUES
-(1, 'Aditya Reza Gusnanda', 'Mahkamah Agung RI', 26, 'Laki-Laki', 'Diploma 3', 'PNS', '2021-12-10 12:51:01', 6, 5, 4, 3, 2, 1, 2, 3, 4, 5),
-(2, 'Joko Susilo', 'Anonim', 19, 'Laki-Laki', 'SMA', 'Pegawai', '2021-12-10 12:51:11', 1, 1, 1, 1, 6, 6, 6, 6, 6, 6),
-(6, 'Cipto Anugerah', 'PT Sumber Jaya', 35, 'Laki-Laki', 'S2', 'Manager', '2021-12-12 12:26:24', 2, 4, 3, 5, 3, 2, 3, 4, 5, 3),
-(7, '', '', 34, 'Perempuan', '-', '-', '2021-12-12 12:56:36', 5, 6, 4, 5, 3, 3, 5, 4, 3, 5);
+(1, 'Aditya Reza Gusnanda', 'Mahkamah Agung RI', 26, 'Laki-Laki', 'Diploma 3', 'PNS', NULL, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5),
+(2, 'Joko Susilo', 'Anonim', 19, 'Laki-Laki', 'SMA', 'Pegawai', NULL, 1, 1, 1, 1, 6, 6, 6, 6, 6, 6),
+(7, 'Steve ', 'Google', 21, 'Laki-Laki', 'S3', 'Project Leader', NULL, 6, 6, 6, 6, 5, 4, 5, 5, 5, 4),
+(8, 'ujang', '', 39, 'Laki-Laki', 'S1', 'ADVOKT', NULL, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6),
+(9, 'SAHRUL', '', 39, 'Laki-Laki', 'S1', 'ADVOKAT', NULL, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6),
+(10, 'BURHAN', '', 45, 'Laki-Laki', 'S1', 'ADVOKAT', NULL, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -902,7 +910,7 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `bukutamu_daftar_kunjungan`
 --
 ALTER TABLE `bukutamu_daftar_kunjungan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
 
 --
 -- AUTO_INCREMENT for table `hukum_regiskuasa`
@@ -920,13 +928,13 @@ ALTER TABLE `setup_satker`
 -- AUTO_INCREMENT for table `survei_hasil_ikm`
 --
 ALTER TABLE `survei_hasil_ikm`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `survei_hasil_ipk`
 --
 ALTER TABLE `survei_hasil_ipk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `survei_pertanyaan`

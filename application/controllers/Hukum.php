@@ -22,8 +22,9 @@ class Hukum extends CI_Controller
             $data['link'] = 'hukum';
             $data['active_menu'] = 'Hukum';
             $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
-            $data['regiskuasa'] = $this->db->get('hukum_regiskuasa')->result_array();
+            $data['regiskuasa'] = $this->Hukum_model->getAllRegisKuasa();
             $data['penandatangan'] = $this->Hukum_model->getPenandatangan();
+
             $this->load->view('templates/header', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('templates/sidebar', $data);
@@ -40,6 +41,11 @@ class Hukum extends CI_Controller
         $data['link'] = 'hukum/dashboard';
         $data['active_menu'] = 'Hukum';
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['total_suratkuasa_today'] = $this->Hukum_model->getTotalSuratKuasaToday();
+        $data['total_suratkuasa_month'] = $this->Hukum_model->getTotalSuratKuasaMonth();
+        $data['total_suratkuasa_year'] = $this->Hukum_model->getTotalSuratKuasaYear();
+        $data['total_suratkuasa'] = $this->Hukum_model->getTotalSuratKuasa();
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('templates/sidebar', $data);

@@ -56,9 +56,9 @@ class Auth extends CI_Controller
                     if ($user['role_id'] == 1) {
                         redirect('admin');
                     } elseif ($user['role_id'] == 4) {
-                        redirect('survei/dashboard');
-                    } elseif ($user['role_id'] == 5) {
                         redirect('bukutamu/dashboard');
+                    } elseif ($user['role_id'] == 5) {
+                        redirect('hukum/dashboard');
                     } else {
                         redirect('user');
                     }
@@ -113,7 +113,7 @@ class Auth extends CI_Controller
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-                'jabatan_id' => 0,
+                'jabatan_id' => 12,
                 'role_id' => 3,
                 'is_active' => 0,
                 'date_created' => time()

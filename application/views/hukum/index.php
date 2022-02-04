@@ -35,9 +35,9 @@
                                         <tr>
                                             <th scope="row"><?= $no++; ?></th>
                                             <td><?= $r['nomor_regiskuasa']; ?></td>
-                                            <td><?= $r['tgl_regiskuasa']; ?></td>
+                                            <td><?= tgl_eng_to_ind(date("d-m-Y", strtotime($r['tgl_regiskuasa']))); ?></td>
                                             <td><?= $r['nomor_suratkuasa']; ?></td>
-                                            <td><?= $r['tgl_suratkuasa']; ?></td>
+                                            <td><?= tgl_eng_to_ind(date("d-m-Y", strtotime($r['tgl_suratkuasa']))); ?></td>
                                             <td><?= $r['nama_pemberikuasa']; ?></td>
                                             <td><?= $r['nama_penerimakuasa']; ?></td>
                                             <td><?= $r['nomor_perkara']; ?></td>
