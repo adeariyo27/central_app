@@ -18,7 +18,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th> Nomor Register Kuasa PTUN Palu</th>
+                                        <th> Nomor Register Kuasa</th>
                                         <th> Tanggal Register Kuasa</th>
                                         <th> Nomor Surat Kuasa</th>
                                         <th> Tanggal Surat Kuasa</th>
