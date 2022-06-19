@@ -85,7 +85,7 @@ class Hukum_model extends CI_Model
     {
         $this->db->where('tgl_regiskuasa >=', $from_date);
         $this->db->where('tgl_regiskuasa <=', $until_date);
-        return $this->db->get('hukum_regiskuasa')->result_array();
+        return $this->db->select('*')->from('hukum_regiskuasa')->order_by('nomor_regiskuasa', 'asc')->get()->result_array();
     }
 
     public function search_npk($npk)
@@ -126,5 +126,11 @@ class Hukum_model extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM hukum_regiskuasa");
         return $query->num_rows();
+    }
+
+    function getTodaySuratKuasa()
+    {
+        $query = $this->db->query("SELECT * FROM hukum_regiskuasa WHERE tgl_regiskuasa = CURDATE()");
+        return $query->result_array();
     }
 }

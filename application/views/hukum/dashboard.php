@@ -96,14 +96,28 @@
                             <tr>
                                 <th>#</th>
                                 <th> Nomor Register Kuasa</th>
-                                <th> Nama Pemberi Kuasa</th>
-                                <th> Nama Penerima Kuasa</th>
+                                <th class="hidden-phone"> Nama Pemberi Kuasa</th>
+                                <th class="hidden-phone"> Nama Penerima Kuasa</th>
                                 <th> Nomor Perkara</th>
                                 <th class="hidden-phone">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            <?php 
+                            $no = 1;
+                            if (empty($total_suratkuasa_today)) {
+                                echo "<tr><td colspan='6' class='font-italic'>Tidak Ada Surat Kuasa Terdaftar Hari Ini</td></tr>";
+                            }
+                            foreach ($today_suratkuasa as $sk) : ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $sk['nomor_regiskuasa']; ?></td>
+                                    <td class="hidden-phone"><?= $sk['nama_pemberikuasa']; ?></td>
+                                    <td class="hidden-phone"><?= $sk['nama_penerimakuasa']; ?></td>
+                                    <td><?= $sk['nomor_perkara']; ?></td>
+                                    <td class="hidden-phone"><?= $sk['keterangan']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </section>

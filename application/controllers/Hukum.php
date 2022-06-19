@@ -45,6 +45,7 @@ class Hukum extends CI_Controller
         $data['total_suratkuasa_month'] = $this->Hukum_model->getTotalSuratKuasaMonth();
         $data['total_suratkuasa_year'] = $this->Hukum_model->getTotalSuratKuasaYear();
         $data['total_suratkuasa'] = $this->Hukum_model->getTotalSuratKuasa();
+        $data['today_suratkuasa'] = $this->Hukum_model->getTodaySuratKuasa();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/topbar', $data);
@@ -90,7 +91,7 @@ class Hukum extends CI_Controller
         $data['title'] = 'Cetak Laporan';
         $data['satker'] = $this->db->get('setup_satker')->row_array();
         $data['judul_laporan'] = 'LAPORAN REGISTER SURAT KUASA';
-        $data['regiskuasa'] = $this->db->get('hukum_regiskuasa')->result_array();
+        $data['regiskuasa'] = $this->db->select('*')->from('hukum_regiskuasa')->order_by('nomor_regiskuasa', 'asc')->get()->result_array();
         $data['penandatangan'] = $this->Hukum_model->getPenandatanganByName();
         $this->load->library('dompdf_gen');
         $this->load->view('hukum/cetak-laporan', $data);
